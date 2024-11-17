@@ -1,0 +1,4 @@
+cargo:rerun-if-env-changed=NEXUS_VM_PROVER
+cargo:rerun-if-changed=bin/riscv32i-unknown-none-elf.a
+cargo:rustc-link-lib=static=nexus-rt
+cargo:rustc-link-search=/Users/macbookpro2020/art/rust/zk-bench/benchmark/nexus-zk-bench/target/riscv32i-unknown-none-elf/debug/build/nexus-rt-eec24d3b15bdd18f/out
