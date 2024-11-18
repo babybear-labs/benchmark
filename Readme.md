@@ -64,6 +64,8 @@
 ### Projects
 - [Halo2](./halo2/)
 - [Nexus](./nexus-zk-bench/)
+- [SP1](./sp1/)
+- [Jolt](./jolt/)
 
 ### Reports
 - [Reports](./reports/)
