@@ -1,0 +1,15 @@
+[workspace]
+[package]
+version = "0.1.0"
+name = "bls-agg-rust-script"
+edition = "2021"
+
+[dependencies]
+sp1-sdk = "2.0.0"
+clap = { version = "4.0", features = ["derive", "env"] }
+serde_json = "1.0.128"
+hex = "0.4.3"
+wasm = { path = "../../wasm" }
+
+[build-dependencies]
+sp1-helper = "2.0.0"

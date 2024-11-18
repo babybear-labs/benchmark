@@ -1,0 +1,15 @@
+[workspace]
+[package]
+version = "0.1.0"
+name = "ecdsa_verify-native_sp1-program"
+edition = "2021"
+
+[dependencies]
+sp1-zkvm = "2.0.0"
+wasm = { path = "../../wasm" }
+sp1-derive = "2.0.0"
+
+# https://docs.succinct.xyz/writing-programs/patched-crates.html
+[patch.crates-io]
+ecdsa-core = { git = "https://github.com/sp1-patches/signatures", package = "ecdsa", branch = "patch-ecdsa-v0.16.9" }
+tiny-keccak = { git = "https://github.com/sp1-patches/tiny-keccak", branch = "patch-v2.0.2" }

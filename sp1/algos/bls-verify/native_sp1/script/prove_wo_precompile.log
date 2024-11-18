@@ -1,0 +1,61 @@
+   Compiling bls-agg-native-script v0.1.0 (/Users/prudhvirampey/Documents/stackrlabs/succinct-residency-exps/bls-agg/rust/native_sp1/script)
+warning: bls-agg-native-script@0.1.0: bls-agg-native-program built at 2024-10-11 17:16:32
+warning: unused variable: `report`
+  --> src/main.rs:41:26
+   |
+41 |         let (mut output, report) = client.execute(ELF, stdin).run().unwrap();
+   |                          ^^^^^^ help: if this is intentional, prefix it with an underscore: `_report`
+   |
+   = note: `#[warn(unused_variables)]` on by default
+
+warning: unused variable: `result`
+  --> src/main.rs:43:13
+   |
+43 |         let result = output.read::<u32>();
+   |             ^^^^^^ help: if this is intentional, prefix it with an underscore: `_result`
+
+warning: `bls-agg-native-script` (bin "bls-agg-native-script") generated 2 warnings
+    Finished `release` profile [optimized] target(s) in 7.47s
+     Running `target/release/bls-agg-native-script --prove`
+Input value: 2
+[2m2024-10-12T00:16:36.958924Z[0m [32m INFO[0m Client circuit version: v2.0.0    
+[2m2024-10-12T00:16:47.618807Z[0m [33m WARN[0m [1mnetwork_prover[0m: close [3mtime.busy[0m[2m=[0m6.50ms [3mtime.idle[0m[2m=[0m2.83µs
+[2m2024-10-12T00:16:47.630252Z[0m [32m INFO[0m [1mexecute[0m: clk = 0 pc = 0x201744    
+[2m2024-10-12T00:16:47.630360Z[0m [32m INFO[0m [1mexecute[0m: ┌╴execution    
+[2m2024-10-12T00:16:48.179277Z[0m [32m INFO[0m [1mexecute[0m: clk = 10000000 pc = 0x214114    
+[2m2024-10-12T00:16:48.723258Z[0m [32m INFO[0m [1mexecute[0m: clk = 20000000 pc = 0x211ca0    
+[2m2024-10-12T00:16:49.246951Z[0m [32m INFO[0m [1mexecute[0m: clk = 30000000 pc = 0x218f78    
+[2m2024-10-12T00:16:49.771432Z[0m [32m INFO[0m [1mexecute[0m: clk = 40000000 pc = 0x211f10    
+[2m2024-10-12T00:16:50.295475Z[0m [32m INFO[0m [1mexecute[0m: clk = 50000000 pc = 0x212588    
+[2m2024-10-12T00:16:50.819227Z[0m [32m INFO[0m [1mexecute[0m: clk = 60000000 pc = 0x21add0    
+[2m2024-10-12T00:16:51.343216Z[0m [32m INFO[0m [1mexecute[0m: clk = 70000000 pc = 0x219cfc    
+[2m2024-10-12T00:16:51.866287Z[0m [32m INFO[0m [1mexecute[0m: clk = 80000000 pc = 0x2120cc    
+[2m2024-10-12T00:16:52.389875Z[0m [32m INFO[0m [1mexecute[0m: clk = 90000000 pc = 0x211d4c    
+[2m2024-10-12T00:16:52.914238Z[0m [32m INFO[0m [1mexecute[0m: clk = 100000000 pc = 0x211c68    
+[2m2024-10-12T00:16:53.440161Z[0m [32m INFO[0m [1mexecute[0m: clk = 110000000 pc = 0x22172c    
+[2m2024-10-12T00:16:53.990620Z[0m [32m INFO[0m [1mexecute[0m: clk = 120000000 pc = 0x211df8    
+[2m2024-10-12T00:16:54.536983Z[0m [32m INFO[0m [1mexecute[0m: clk = 130000000 pc = 0x211b40    
+[2m2024-10-12T00:16:55.064188Z[0m [32m INFO[0m [1mexecute[0m: clk = 140000000 pc = 0x211cf8    
+[2m2024-10-12T00:16:55.588211Z[0m [32m INFO[0m [1mexecute[0m: clk = 150000000 pc = 0x211a94    
+[2m2024-10-12T00:16:56.112961Z[0m [32m INFO[0m [1mexecute[0m: clk = 160000000 pc = 0x211a90    
+[2m2024-10-12T00:16:56.637890Z[0m [32m INFO[0m [1mexecute[0m: clk = 170000000 pc = 0x211cfc    
+[2m2024-10-12T00:16:57.162628Z[0m [32m INFO[0m [1mexecute[0m: clk = 180000000 pc = 0x201464    
+[2m2024-10-12T00:16:57.688036Z[0m [32m INFO[0m [1mexecute[0m: clk = 190000000 pc = 0x2120cc    
+[2m2024-10-12T00:16:58.214419Z[0m [32m INFO[0m [1mexecute[0m: clk = 200000000 pc = 0x201474    
+[2m2024-10-12T00:16:58.739245Z[0m [32m INFO[0m [1mexecute[0m: clk = 210000000 pc = 0x219c4c    
+[2m2024-10-12T00:16:59.264061Z[0m [32m INFO[0m [1mexecute[0m: clk = 220000000 pc = 0x211624    
+stdout: aggregated_signature: Signature(G2Affine { x: 0x00abc29d88c196991745975c9206b8f56ff120b70df72ce36024da3382e398b47189cf1e9e6e998212e8ba5ab2dc79e2 + 0x0056bb0d3fb4f892290380e62d0603e0af6bd5db8e4f405876ff397e473ace7310b3ff8509aeffb47da06e0e298d6327*u, y: 0x07512e3a97c6de7b86fd6b3be4b2a1a6732f34cdd4838d309f45f4a3dbca35ccf1821ef6814c20389c870fb4acac4937 + 0x11e4f26ddead8f98686b80580c8653bdc1ecac03f505159387c6cf1feaeb6be625c9c1a850ab134d3e2b770a8a9ee705*u, infinity: Choice(0) })
+[2m2024-10-12T00:16:59.540714Z[0m [32m INFO[0m [1mexecute[0m: └╴225,094,959 cycles    
+[2m2024-10-12T00:16:59.546864Z[0m [32m INFO[0m [1mexecute[0m: close [3mtime.busy[0m[2m=[0m11.9s [3mtime.idle[0m[2m=[0m2.42µs
+[2m2024-10-12T00:16:59.546882Z[0m [32m INFO[0m Simulation complete, cycles: 225100344    
+[2m2024-10-12T00:17:01.851329Z[0m [32m INFO[0m Created proofrequest_01j9z1bw49fqrs6nwgynnjk6jp    
+[2m2024-10-12T00:17:01.851799Z[0m [32m INFO[0m View in explorer: https://explorer.succinct.xyz/proofrequest_01j9z1bw49fqrs6nwgynnjk6jp    
+[2m2024-10-12T00:17:04.400762Z[0m [32m INFO[0m Proof request claimed, proving...    
+[2m2024-10-12T00:20:05.553118Z[0m [32m INFO[0m Proof request fulfilled    
+Successfully generated proof!
+deserialized_proof.public_values: SP1PublicValues { buffer: Buffer { data: [1, 0, 0, 0], ptr: 0 } }
+deserialized_proof.stdin: SP1Stdin { buffer: [[2, 0, 0, 0]], ptr: 0, proofs: [] }
+deserialized_proof.sp1_version: "v2.0.0"
+[2m2024-10-12T00:20:09.822727Z[0m [32m INFO[0m [1mverify[0m: close [3mtime.busy[0m[2m=[0m195ms [3mtime.idle[0m[2m=[0m3.42µs
+Successfully verified proof!
+SP1_PROVER=network SP1_PRIVATE_KEY= RUST_LOG=info cargo run --release --   52.37s user 4.71s system 25% cpu 3:41.34 total

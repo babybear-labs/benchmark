@@ -1,0 +1,39 @@
+Input value: 2
+[2m2024-10-14T23:40:54.188812Z[0m [32m INFO[0m Client circuit version: v2.0.0    
+[2m2024-10-14T23:41:06.749649Z[0m [33m WARN[0m [1mnetwork_prover[0m: close [3mtime.busy[0m[2m=[0m7.58ms [3mtime.idle[0m[2m=[0m5.79µs
+[2m2024-10-14T23:41:06.794518Z[0m [32m INFO[0m [1mexecute[0m: clk = 0 pc = 0x201ab8    
+[2m2024-10-14T23:41:06.795957Z[0m [32m INFO[0m [1mexecute[0m: ┌╴execution    
+[2m2024-10-14T23:41:07.593698Z[0m [32m INFO[0m [1mexecute[0m: clk = 10000000 pc = 0x250fe4    
+[2m2024-10-14T23:41:08.136337Z[0m [32m INFO[0m [1mexecute[0m: clk = 20000000 pc = 0x2502b4    
+[2m2024-10-14T23:41:08.698002Z[0m [32m INFO[0m [1mexecute[0m: clk = 30000000 pc = 0x250d84    
+[2m2024-10-14T23:41:09.249792Z[0m [32m INFO[0m [1mexecute[0m: clk = 40000000 pc = 0x24f9a4    
+[2m2024-10-14T23:41:09.785261Z[0m [32m INFO[0m [1mexecute[0m: clk = 50000000 pc = 0x24fbe0    
+[2m2024-10-14T23:41:10.338293Z[0m [32m INFO[0m [1mexecute[0m: clk = 60000000 pc = 0x2538f4    
+[2m2024-10-14T23:41:10.900681Z[0m [32m INFO[0m [1mexecute[0m: clk = 70000000 pc = 0x2017e8    
+[2m2024-10-14T23:41:11.464358Z[0m [32m INFO[0m [1mexecute[0m: clk = 80000000 pc = 0x251ab0    
+[2m2024-10-14T23:41:12.012026Z[0m [32m INFO[0m [1mexecute[0m: clk = 90000000 pc = 0x215668    
+[2m2024-10-14T23:41:12.587268Z[0m [32m INFO[0m [1mexecute[0m: clk = 100000000 pc = 0x214570    
+[2m2024-10-14T23:41:13.168674Z[0m [32m INFO[0m [1mexecute[0m: clk = 110000000 pc = 0x212628    
+[2m2024-10-14T23:41:13.743363Z[0m [32m INFO[0m [1mexecute[0m: clk = 120000000 pc = 0x212e08    
+[2m2024-10-14T23:41:14.312569Z[0m [32m INFO[0m [1mexecute[0m: clk = 130000000 pc = 0x260e84    
+[2m2024-10-14T23:41:14.859014Z[0m [32m INFO[0m [1mexecute[0m: clk = 140000000 pc = 0x226258    
+[2m2024-10-14T23:41:15.392150Z[0m [32m INFO[0m [1mexecute[0m: clk = 150000000 pc = 0x225f1c    
+[2m2024-10-14T23:41:16.003220Z[0m [32m INFO[0m [1mexecute[0m: clk = 160000000 pc = 0x226964    
+[2m2024-10-14T23:41:16.619798Z[0m [32m INFO[0m [1mexecute[0m: clk = 170000000 pc = 0x250124    
+[2m2024-10-14T23:41:17.163209Z[0m [32m INFO[0m [1mexecute[0m: clk = 180000000 pc = 0x22d33c    
+[2m2024-10-14T23:41:17.742830Z[0m [32m INFO[0m [1mexecute[0m: clk = 190000000 pc = 0x225ef0    
+[2m2024-10-14T23:41:18.287841Z[0m [32m INFO[0m [1mexecute[0m: clk = 200000000 pc = 0x2017c4    
+[2m2024-10-14T23:41:18.833329Z[0m [32m INFO[0m [1mexecute[0m: clk = 210000000 pc = 0x253890    
+[2m2024-10-14T23:41:19.369331Z[0m [32m INFO[0m [1mexecute[0m: clk = 220000000 pc = 0x225e04    
+[2m2024-10-14T23:41:19.907056Z[0m [32m INFO[0m [1mexecute[0m: clk = 230000000 pc = 0x2296b8    
+[2m2024-10-14T23:41:20.457551Z[0m [32m INFO[0m [1mexecute[0m: clk = 240000000 pc = 0x2265b4    
+[2m2024-10-14T23:41:21.004637Z[0m [32m INFO[0m [1mexecute[0m: clk = 250000000 pc = 0x258714    
+[2m2024-10-14T23:41:21.551595Z[0m [32m INFO[0m [1mexecute[0m: clk = 260000000 pc = 0x2522c0    
+[2m2024-10-14T23:41:22.101824Z[0m [32m INFO[0m [1mexecute[0m: clk = 270000000 pc = 0x259288    
+[2m2024-10-14T23:41:22.649069Z[0m [32m INFO[0m [1mexecute[0m: clk = 280000000 pc = 0x250b94    
+[2m2024-10-14T23:41:22.820313Z[0m [32m INFO[0m [1mexecute[0m: └╴283,151,510 cycles    
+[2m2024-10-14T23:41:22.836656Z[0m [32m INFO[0m [1mexecute[0m: close [3mtime.busy[0m[2m=[0m16.1s [3mtime.idle[0m[2m=[0m3.17µs
+[2m2024-10-14T23:41:22.836703Z[0m [32m INFO[0m Simulation complete, cycles: 283158011    
+[2m2024-10-14T23:41:24.951846Z[0m [32m INFO[0m Created proofrequest_01ja6pgtbvfgnr4kdacre3mcrz    
+[2m2024-10-14T23:41:24.952271Z[0m [32m INFO[0m View in explorer: https://explorer.succinct.xyz/proofrequest_01ja6pgtbvfgnr4kdacre3mcrz    
+[2m2024-10-14T23:41:27.265602Z[0m [32m INFO[0m Proof request claimed, proving...    
