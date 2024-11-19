@@ -4,3 +4,4 @@
 - [Nexus](./nexus/)
 - [Jolt](./jolt/)
 - [SP1](./sp1/)
+- [Zokrates](./zokrates/)

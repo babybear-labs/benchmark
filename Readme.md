@@ -66,6 +66,7 @@
 - [Nexus](./nexus-zk-bench/)
 - [SP1](./sp1/)
 - [Jolt](./jolt/)
+- [Zokrates](./zokrates/)
 
 ### Reports
 - [Reports](./reports/)
