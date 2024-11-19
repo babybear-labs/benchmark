@@ -5,3 +5,4 @@
 - [Jolt](./jolt/)
 - [SP1](./sp1/)
 - [Zokrates](./zokrates/)
+- [Powdr](./powdr/)
