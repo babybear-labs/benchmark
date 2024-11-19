@@ -68,6 +68,7 @@
 - [SP1](./sp1/)
 - [Jolt](./jolt/)
 - [Zokrates](./zokrates/)
+- [Powdr](./powdr/)
 
 ### Reports
 - [Reports](./reports/)
