@@ -30,8 +30,9 @@
 - Metrics to measure
      - Prover time
      - Verifier time
+     - Prover Space
+     - Verifier Space / Proof size
      - Parallel execution
-     - Proof size
      - CPU usage
      - Memory usage
      - Verifier gas consumtion
@@ -54,6 +55,8 @@
 - Arkworks
 - Circom
 - Mina
+- ~~gnark~~
+- ~~Miden VM~~
 
 ### Benchmark Machine Specification
 - Macbook M1 Pro - Core 8 - Memory 8 GB
