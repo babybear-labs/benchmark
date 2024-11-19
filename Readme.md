@@ -47,7 +47,6 @@
 - SP1, Plonky3
 - Jolt
 - powdr
-- Miden VM
 - Noir
 - Aleo
 - ZoKrates
@@ -55,7 +54,6 @@
 - Arkworks
 - Circom
 - Mina
-- Gnark
 
 ### Benchmark Machine Specification
 - Macbook M1 Pro - Core 8 - Memory 8 GB
