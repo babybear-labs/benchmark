@@ -2,19 +2,22 @@
 export RUST_LOG=info
 
 # Rust benchmarks
-merkle-rust = algos/merkle
-merkle-proof-rust = algos/merkle_proof
-nth-prime-rust = algos/nth_prime
-keccak-rust = algos/keccak
-poseidon-rust = algos/poseidon
-bls-agg-rust = algos/bls-agg
-ecdsa-verify-rust = algos/ecdsa_verify
-bls-verify-rust = algos/bls-verify
+add = algos/addition
+div = algos/division
+multi = algos/multiplication
+sub = algos/substraction
+fib = algos/fib
+sha = algos/sha256
 
 all:
 	@echo "Running all benchmarks..."
-	make run-nth-prime
+	make operations
 
-run-nth-prime:
+operations:
 	@echo "Running nth-prime benchmark..."
-	cd ${nth-prime-rust}/native_jolt; cargo run --release > cycles.txt
+	cd ${add}/; cargo run --release > cycles.txt
+	cd ${div}/; cargo run --release > cycles.txt
+	cd ${multi}/; cargo run --release > cycles.txt
+	cd ${sub}/; cargo run --release > cycles.txt
+	cd ${fib}/; cargo run --release > cycles.txt
+	cd ${sha}/; cargo run --release > cycles.txt
