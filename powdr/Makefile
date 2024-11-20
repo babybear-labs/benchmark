@@ -10,4 +10,4 @@ all:
 
 run-nth-prime:
 	@echo "Running nth-prime benchmark..."
-	cd ${nth-prime-rust}/native_sp1/script; SP1_PROVER=network cargo run --release > cycles.txt
+	cd ${nth-prime-rust}/; cargo run --release > cycles.txt
