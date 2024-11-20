@@ -72,3 +72,9 @@
 
 ### Reports
 - [Reports](./reports/)
+    - [Halo2](./reports/halo2/)
+    - [Nexus](./reports/nexus/)
+    - [Jolt](./reports/jolt/)
+    - [SP1](./reports/sp1/)
+    - [Zokrates](./reports/zokrates/)
+    - [Powdr](./reports/powdr/)
