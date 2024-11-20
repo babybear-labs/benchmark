@@ -1,7 +1,0 @@
-Input value: 2
-[2m2024-10-11T23:53:28.291822Z[0m [32m INFO[0m [1mexecute[0m: clk = 0 pc = 0x201744    
-[2m2024-10-11T23:53:28.292002Z[0m [32m INFO[0m [1mexecute[0m: ┌╴execution    
-stdout: aggregated_signature: Signature(G2Affine { x: 0x00abc29d88c196991745975c9206b8f56ff120b70df72ce36024da3382e398b47189cf1e9e6e998212e8ba5ab2dc79e2 + 0x0056bb0d3fb4f892290380e62d0603e0af6bd5db8e4f405876ff397e473ace7310b3ff8509aeffb47da06e0e298d6327*u, y: 0x07512e3a97c6de7b86fd6b3be4b2a1a6732f34cdd4838d309f45f4a3dbca35ccf1821ef6814c20389c870fb4acac4937 + 0x11e4f26ddead8f98686b80580c8653bdc1ecac03f505159387c6cf1feaeb6be625c9c1a850ab134d3e2b770a8a9ee705*u, infinity: Choice(0) })
-[2m2024-10-11T23:53:29.285826Z[0m [32m INFO[0m [1mexecute[0m: └╴5,994,735 cycles    
-[2m2024-10-11T23:53:29.341082Z[0m [32m INFO[0m [1mexecute[0m: close [3mtime.busy[0m[2m=[0m1.07s [3mtime.idle[0m[2m=[0m20.4µs
-Program executed successfully.
