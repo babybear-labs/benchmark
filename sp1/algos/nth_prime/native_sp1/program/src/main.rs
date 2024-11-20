@@ -3,7 +3,21 @@
 #![no_main]
 sp1_zkvm::entrypoint!(main);
 
-use wasm::nth_prime;
+#[no_mangle]
+pub fn nth_prime(n: u64) -> u64 {
+    if n == 0 {
+        return 0;
+    }
+    let mut primes = vec![2];
+    let mut candidate = 3;
+    while primes.len() < n as usize {
+        if primes.iter().all(|&p| candidate % p != 0) {
+            primes.push(candidate);
+        }
+        candidate += 2;
+    }
+    primes[n as usize - 1]
+}
 
 pub fn main() {
     let input = sp1_zkvm::io::read::<u64>();
