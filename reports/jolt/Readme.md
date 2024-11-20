@@ -23,7 +23,7 @@ Total Time elapsed: 31.505612833s
 ```
 
 
-### Substraction
+### Subtraction
 ```rust
 fn mul(a: u64, b: u64) -> u64 {
     a - b

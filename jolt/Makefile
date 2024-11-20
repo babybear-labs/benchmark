@@ -5,7 +5,7 @@ export RUST_LOG=info
 add = algos/addition
 div = algos/division
 multi = algos/multiplication
-sub = algos/substraction
+sub = algos/subtraction
 fib = algos/fib
 sha = algos/sha256
 
