@@ -1,0 +1,10 @@
+Input: 10
+Trace length: 9
+Prover Time 28.819844083s
+Proof Size 208395
+
+Verify Time 27.633625ms
+
+result: ()
+valid: true
+Total Time elapsed: 28.956085458s
