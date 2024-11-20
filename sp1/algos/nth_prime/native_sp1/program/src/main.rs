@@ -25,6 +25,5 @@ pub fn main() {
     let res = nth_prime(input);
     println!("cycle-tracker-end: execution");
     println!("The {}th prime is {}.", input, res);
-
     sp1_zkvm::io::commit(&res);
 }

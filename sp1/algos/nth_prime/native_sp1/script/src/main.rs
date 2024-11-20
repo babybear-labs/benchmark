@@ -23,7 +23,7 @@ fn main() {
     sp1_sdk::utils::setup_logger();
 
     // Read the JSON file
-    let file = File::open("../../../../inputs/nth_prime.json").expect("Failed to open input file");
+    let file = File::open("../../../../inputs/data.json").expect("Failed to open input file");
     let reader = BufReader::new(file);
     let json: Value = serde_json::from_reader(reader).expect("Failed to parse JSON");
     // Extract the number from the JSON
@@ -43,6 +43,7 @@ fn main() {
         let res = output.read::<u64>();
         println!("res: {}", res);
     } else {
+        println!("Generating Proof");
         // Setup the program for proving.
         let (pk, vk) = client.setup(ELF);
 
