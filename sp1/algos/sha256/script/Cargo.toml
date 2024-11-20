@@ -1,16 +1,13 @@
 [package]
 version = "0.1.0"
-name = "fibonacci-script"
+name = "sha-script"
 edition = "2021"
-default-run = "fibonacci"
+default-run = "sha"
 
 [[bin]]
-name = "fibonacci"
+name = "sha"
 path = "src/bin/main.rs"
 
-[[bin]]
-name = "evm"
-path = "src/bin/evm.rs"
 
 [dependencies]
 sp1-sdk = "3.0.0"
@@ -20,7 +17,7 @@ clap = { version = "4.0", features = ["derive", "env"] }
 tracing = "0.1.40"
 hex = "0.4.3"
 alloy-sol-types = { workspace = true }
-fibonacci-lib = { path = "../lib" }
+sha-lib = { path = "../lib" }
 
 [build-dependencies]
 sp1-helper = "3.0.0"

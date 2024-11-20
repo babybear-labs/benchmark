@@ -9,7 +9,7 @@
 sp1_zkvm::entrypoint!(main);
 
 use alloy_sol_types::SolType;
-use fibonacci_lib::{fibonacci, PublicValuesStruct};
+use sha_lib::{sha2, PublicValuesStruct};
 
 pub fn main() {
     // Read an input to the program.
@@ -19,10 +19,11 @@ pub fn main() {
     let n = sp1_zkvm::io::read::<u32>();
 
     // Compute the n'th fibonacci number using a function from the workspace lib crate.
-    let (a, b) = fibonacci(n);
+    let input = &[5u8; 20000];
+    let a = sha2(input);
 
     // Encode the public values of the program.
-    let bytes = PublicValuesStruct::abi_encode(&PublicValuesStruct { n, a, b });
+    let bytes = PublicValuesStruct::abi_encode(&PublicValuesStruct { n, a });
 
     // Commit to the public values of the program. The final proof will have a commitment to all the
     // bytes that were committed to.
