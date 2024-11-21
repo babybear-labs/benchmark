@@ -21,6 +21,16 @@ Our aim is to benchmark the performance of these proofs, comparing them in terms
   - nth Prime: Variants 1, 10, 100, 1000, 10000
   - Cryptographic Verifications: ECDSA, Elliptic Curve, BLS Verification, BLS Aggregation
 
+## Proving Systems
+
+- Halo2
+- Nexus zkVM
+- Risc Zero
+- Groth16 (Circom)
+- SP1
+- Jolt
+- Powdr
+
 ## Metrics
 
 - Prover Time
@@ -34,16 +44,6 @@ Our aim is to benchmark the performance of these proofs, comparing them in terms
 - Verifier Gas Consumption
 - Cycles Count
 - Developer Friendliness
-
-## Projects Included
-
-- Halo2
-- Nexus zkVM
-- Risc Zero
-- Groth16 (Circom)
-- SP1
-- Jolt
-- Powdr
 
 ## Benchmark Machine Specifications
 
@@ -60,9 +60,11 @@ Our aim is to benchmark the performance of these proofs, comparing them in terms
 - [Jolt](./jolt/)
 - [Zokrates](./zokrates/)
 - [Powdr](./powdr/)
+- [Groth16](./groth16/)
+- [Risc Zero](./risc-zero/)
 
 ## Reports
-
+The reports can be found in the [reports](./reports/) directory.
 - [Reports](./reports/)
   - [Halo2](./reports/halo2/)
   - [Nexus](./reports/nexus/)
