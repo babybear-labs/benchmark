@@ -1,0 +1,7 @@
+{
+  "prover_time_secs": 0.197401162,
+  "verifier_time_secs": 9.331301692,
+  "proof_size_bytes": 5088,
+  "memory_usage_bytes": 33456,
+  "verification_result": true
+}
