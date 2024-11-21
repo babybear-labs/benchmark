@@ -2,7 +2,7 @@
 
 ## Overview
 
-This repository hosts the source code and resources for benchmarking various Zero-Knowledge (ZK) proofs. It builds upon the original repositories of Halo2, RISC0, Nexus, SP1, Jolt, Groth16, and Powdr with our implementations of proofs including SHA256, Fibonacci, and Merkle Merge functionalities.
+This repository hosts the source code and resources for benchmarking various Zero-Knowledge (ZK) proofs. It builds upon the original repositories of Halo2, RISC0, Nexus, SP1, Jolt, Groth16, and Powdr with our implementations of proofs including but not limited to SHA256, Fibonacci operations.
 
 Our aim is to benchmark the performance of these proofs, comparing them in terms of time, space, and other metrics. This comprehensive comparison will not only highlight the most popular ZK proofs and their implementations but also deepen our understanding of their inner workings and proving systems.
 
