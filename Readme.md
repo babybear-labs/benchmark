@@ -64,7 +64,7 @@
 
 ### Projects
 - [Halo2](./halo2/)
-- [Nexus](./nexus-zk-bench/)
+- [Nexus](nexus/)
 - [SP1](./sp1/)
 - [Jolt](./jolt/)
 - [Zokrates](./zokrates/)
