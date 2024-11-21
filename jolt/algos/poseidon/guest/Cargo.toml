@@ -1,0 +1,16 @@
+[package]
+name = "guest"
+version = "0.1.0"
+edition = "2021"
+
+[[bin]]
+name = "guest"
+path = "./src/lib.rs"
+
+[features]
+guest = []
+
+[dependencies]
+jolt = { package = "jolt-sdk", git = "https://github.com/a16z/jolt", features = ["guest-std"]}
+starknet-crypto = { version = "0.7.2", default-features = false, features = ["alloc"] }
+starknet-types-core = { version = "0.1.6", default-features = false, features = ["alloc"] }
