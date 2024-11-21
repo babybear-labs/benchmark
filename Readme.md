@@ -82,7 +82,7 @@ Each project has its own README file with instructions on how to install the dep
 This project is part of the ZK and Scaling Bootcamp organized by Encode club.  
 Tanmoy : https://x.com/mtanm0y
 Rosemary :https://x.com/rosekoikara
-Anubhav : https://x.com/anubhav_io
+Anubha
 Yogesh : https://x.com/yogesh_eth
 
 ## Acknowledgments
