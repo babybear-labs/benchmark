@@ -145,3 +145,226 @@ Proof generation took: 15.174332083s
 ```
 
 ## Merkle Membership Proof
+```rust
+use sha2::{Digest, Sha256};
+use hex;
+
+pub struct MerkleTree {
+    leaves: Vec<[u8; 32]>,
+    tree_levels: Vec<Vec<[u8; 32]>>,
+}
+
+impl MerkleTree {
+    pub fn new(leaves: Vec<[u8; 32]>) -> Self {
+        let mut tree = MerkleTree {
+            leaves,
+            tree_levels: Vec::new(),
+        };
+        tree.build_tree();
+        tree
+    }
+
+    fn build_tree(&mut self) {
+        if self.leaves.is_empty() {
+            return;
+        }
+
+        let mut curr_level: Vec<[u8; 32]> = self.leaves.iter().map(|leaf| sha256_hash(leaf)).collect();
+        self.tree_levels.push(curr_level.clone());
+
+        while curr_level.len() > 1 {
+            let mut next_level: Vec<[u8; 32]> = Vec::with_capacity((curr_level.len() + 1) / 2);
+            for chunk in curr_level.chunks(2) {
+                if chunk.len() == 2 {
+                    let combined = [&chunk[0][..], &chunk[1][..]].concat();
+                    next_level.push(sha256_hash(&combined));
+                } else {
+                    next_level.push(chunk[0]);
+                }
+            }
+            self.tree_levels.push(next_level.clone());
+            curr_level = next_level;
+        }
+    }
+
+    pub fn get_root(&self) -> [u8; 32] {
+        if self.tree_levels.is_empty() {
+            return [0; 32];
+        }
+        self.tree_levels.last().unwrap()[0]
+    }
+
+    pub fn get_proof(&self, index: usize) -> Vec<[u8; 32]> {
+        let mut proof = Vec::new();
+        let mut idx = index;
+
+        for level in &self.tree_levels {
+            if level.len() <= 1 {
+                break;
+            }
+
+            let sibling_index = if idx % 2 == 0 { idx + 1 } else { idx - 1 };
+            if sibling_index < level.len() {
+                proof.push(level[sibling_index]);
+            }
+
+            idx /= 2;
+        }
+
+        proof
+    }
+}
+
+fn sha256_hash(data: &[u8]) -> [u8; 32] {
+    let mut hasher = Sha256::new();
+    hasher.update(data);
+    let result = hasher.finalize();
+    result.into()
+}
+
+#[no_mangle]
+pub fn generate_merkle_proof(leaves_base_2: u32) -> u32 {
+    let total_leaves = 2_usize.pow(leaves_base_2);
+    let leaves = vec![[0u8; 32]; total_leaves];
+    let tree = MerkleTree::new(leaves);
+    let root = hex::encode(tree.get_root());
+    let leaf_idx: usize = 1;
+    let proof = tree.get_proof(leaf_idx).iter().map(|hash| hex::encode(hash)).collect::<Vec<String>>();
+    println!("Merkle tree with {} leaves has root {}", total_leaves, root);
+    println!("Proof for leaf at index {} is {:?}", leaf_idx, proof);
+    1
+}
+```
+### Result
+
+- Input 2
+```shell
+Running powdr-riscv executor in fast mode...
+Merkle tree with 4 leaves has root 1223349a40d2ee10bd1bebb5889ef8018c8bc13359ed94b387810af96c6e4268
+Proof for leaf at index 1 is ["66687aadf862bd776c8fc18b8e9f8e20089714856ee233b3902a591d0d5f2925", "2eeb74a6177f588d80c0c752b99556902ddf9682d0b906f5aa2adbaf8466a4e9"]
+Fast executor took: 820.184375ms
+Trace length: 76906
+Creating program ZK setup. This has to be done only once per program.
+Merkle tree with 4 leaves has root 1223349a40d2ee10bd1bebb5889ef8018c8bc13359ed94b387810af96c6e4268
+Proof for leaf at index 1 is ["66687aadf862bd776c8fc18b8e9f8e20089714856ee233b3902a591d0d5f2925", "2eeb74a6177f588d80c0c752b99556902ddf9682d0b906f5aa2adbaf8466a4e9"]
+Merkle tree with 4 leaves has root 1223349a40d2ee10bd1bebb5889ef8018c8bc13359ed94b387810af96c6e4268
+Proof for leaf at index 1 is ["66687aadf862bd776c8fc18b8e9f8e20089714856ee233b3902a591d0d5f2925", "2eeb74a6177f588d80c0c752b99556902ddf9682d0b906f5aa2adbaf8466a4e9"]
+Running witness and proof generation for 1 chunks...
+[00:00:08 (ETA: 00:00:14)] ████████░░░░░░░░░░░░ 41% - 23084 rows/s, 1785k identities/s, 89% progressMerkle tree with 4 leaves has root 1223349a40d2ee10bd1bebb5889ef8018c8bc13
+[00:00:08 (ETA: 00:00:13)] ████████░░░░░░░░░░░░ 43% - 24509 rows/s, 1877k identities/s, 89% progressProof for leaf at index 1 is ["66687aadf862bd776c8fc18b8e9f8e20089714856ee233b3902a591d0d5f2925", "2eeb74a6177f588d80c0c752b99556902ddf9682d0b906f5aa2adbaf8466a4
+[00:00:08 (ETA: 00:00:00)] ████████████████████ 100% - 131216 rows/s, 9578k identities/s, 100% progressGenerating proof...
+Proof generation took: 10.842923834s
+```
+
+
+## Poseidon
+```rust
+use starknet_crypto::poseidon_hash_single;
+use starknet_types_core::felt::Felt;
+
+/// Ref: https://github.com/xJonathanLEI/starknet-rs/blob/master/starknet-crypto/benches/poseidon_hash.rs
+#[no_mangle]
+pub fn poseidon_hash() {
+    let input = &[5u8; 32];
+    let elem = Felt::from_bytes_be(input);
+    let hash = poseidon_hash_single(elem).to_fixed_hex_string();
+}
+```
+
+### Results
+
+- Input: 32 Bytes
+```shell
+
+1st Run
+
+Running powdr-riscv executor in fast mode...
+Fast executor took: 509.251917ms
+Trace length: 286652
+Loading program ZK setup.
+Running witness and proof generation for 2 chunks...
+[00:00:22 (ETA: 00:00:00)] ████████████████████ 100% - 20454 rows/s, 1637k identities/s, 89% progressGenerating proof...
+Proof generation took: 13.594827208s
+[00:00:08 (ETA: 00:00:00)] ████████████████████ 100% - 124533 rows/s, 9090k identities/s, 100% progressGenerating proof...
+Proof generation took: 7.946486125s
+
+2nd Run
+
+Running powdr-riscv executor in fast mode...
+Fast executor took: 512.843792ms
+Trace length: 286652
+Creating program ZK setup. This has to be done only once per program.
+Running witness and proof generation for 2 chunks...
+[00:00:28 (ETA: 00:00:00)] ████████████████████ 100% - 18141 rows/s, 1452k identities/s, 89% progressGenerating proof...
+Proof generation took: 28.434556708s
+[00:00:09 (ETA: 00:00:00)] ████████████████████ 100% - 111544 rows/s, 8142k identities/s, 100% progressGenerating proof...
+Proof generation took: 9.714906s
+```
+
+
+- Input; 100 Bytes
+```shell
+Fast executor took: 1.063086s
+Trace length: 836956
+Creating program ZK setup. This has to be done only once per program.
+Running witness and proof generation for 4 chunks...
+[00:00:47 (ETA: 00:00:00)] ████████████████████ 100% - 11408 rows/s, 916k identities/s, 89% progress                     Generating proof...
+Proof generation took: 30.177880459s
+[00:00:37 (ETA: 00:00:00)] ████████████████████ 100% - 12310 rows/s, 989k identities/s, 89% progress                     Generating proof...
+Proof generation took: 46.75899225s
+[00:00:45 (ETA: 00:00:00)] ████████████████████ 100% - 11411 rows/s, 900k identities/s, 89% progress                     Generating proof...
+Proof generation took: 45.871270584s
+[00:00:22 (ETA: 00:00:00)] ████████████████████ 100% - 77261 rows/s, 5640k identities/s, 100% progress                   Generating proof...
+Proof generation took: 48.474264875s
+```
+
+- Input; 1k Bytes
+```shell
+Running powdr-riscv executor in fast mode...
+Fast executor took: 7.05421125s
+Trace length: 4744346
+Creating program ZK setup. This has to be done only once per program.
+Running witness and proof generation for 20 chunks...
+[00:00:42 (ETA: 00:00:00)] ████████████████████ 100% - 8655 rows/s, 679k identities/s, 89% progress                      Generating proof...
+Proof generation took: 25.221509833s
+[00:00:24 (ETA: 00:00:00)] ████████████████████ 100% - 12150 rows/s, 984k identities/s, 89% progress                     Generating proof...
+Proof generation took: 21.510615667s
+[00:00:37 (ETA: 00:00:00)] ████████████████████ 100% - 13405 rows/s, 1057k identities/s, 89% progress                    Generating proof...
+Proof generation took: 26.149253666s
+[00:00:24 (ETA: 00:00:00)] ████████████████████ 100% - 12484 rows/s, 1000k identities/s, 89% progress                    Generating proof...
+Proof generation took: 24.792396041s
+[00:00:41 (ETA: 00:00:00)] ████████████████████ 100% - 8132 rows/s, 670k identities/s, 91% progress                      Generating proof...
+Proof generation took: 24.947313333s
+[00:00:40 (ETA: 00:00:00)] ████████████████████ 100% - 12225 rows/s, 978k identities/s, 89% progress                     Generating proof...
+Proof generation took: 33.005294167s
+[00:00:29 (ETA: 00:00:00)] ████████████████████ 100% - 13306 rows/s, 1049k identities/s, 89% progress                    Generating proof...
+Proof generation took: 30.326178959s
+[00:00:32 (ETA: 00:00:00)] ████████████████████ 100% - 8591 rows/s, 693k identities/s, 89% progress                      Generating proof...
+Proof generation took: 27.267400792s
+[00:00:23 (ETA: 00:00:00)] ████████████████████ 100% - 13160 rows/s, 1035k identities/s, 89% progress                    Generating proof...
+Proof generation took: 24.200584084s
+[00:00:08 (ETA: 00:01:55)] █░░░░░░░░░░░░░░░░░░░ 8% - 2326 rows/s, 478k identities/s, 94% progress
+[00:00:08 (ETA: 00:01:55)] █░░░░░░░░░░░░░░░░░░░ 8% - 3015 rows/s, 390k identities/s, 92% progre
+[00:00:30 (ETA: 00:00:00)] ████████████████████ 100% - 14048 rows/s, 1098k identities/s, 89% progressGenerating proof...
+Proof generation took: 26.932177417s
+[00:00:25 (ETA: 00:00:00)] ████████████████████ 100% - 13054 rows/s, 1019k identities/s, 89% progressGenerating proof...
+Proof generation took: 26.9118305s
+[00:00:38 (ETA: 00:00:00)] ████████████████████ 100% - 12686 rows/s, 1010k identities/s, 89% progressGenerating proof...
+Proof generation took: 29.311177792s
+[00:00:27 (ETA: 00:00:00)] ████████████████████ 100% - 10941 rows/s, 874k identities/s, 89% progressGenerating proof...
+Proof generation took: 36.746900708s
+[00:00:25 (ETA: 00:00:00)] ████████████████████ 100% - 11605 rows/s, 950k identities/s, 89% progressGenerating proof...
+Proof generation took: 34.97565475s
+[00:00:25 (ETA: 00:00:00)] ████████████████████ 100% - 12718 rows/s, 1018k identities/s, 89% progressGenerating proof...
+Proof generation took: 29.520409708s
+[00:00:28 (ETA: 00:00:00)] ████████████████████ 100% - 11393 rows/s, 931k identities/s, 89% progressGenerating proof...
+Proof generation took: 28.32494225s
+[00:00:24 (ETA: 00:00:00)] ████████████████████ 100% - 13034 rows/s, 1035k identities/s, 89% progressGenerating proof...
+Proof generation took: 23.711504292s
+[00:00:24 (ETA: 00:00:00)] ████████████████████ 100% - 11986 rows/s, 968k identities/s, 90% progressGenerating proof...
+Proof generation took: 24.198188417s
+[00:00:26 (ETA: 00:00:00)] ████████████████████ 100% - 11428 rows/s, 940k identities/s, 89% progressGenerating proof...
+Proof generation took: 29.701452125s
+[00:00:20 (ETA: 00:00:00)] ████████████████████ 100% - 80243 rows/s, 5857k identities/s, 100% progressGenerating proof...
+Proof generation took: 41.262138375s
+```

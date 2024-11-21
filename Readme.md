@@ -1,81 +1,89 @@
-# ZK Benchmark
+# ZK Benchmark Project
 
-### Goals
+## Overview
 
-- Benchmark different ZK proofs for following operations.
-    - Addition, Subtraction, Multiplication, Division
-    - Loop
-        - Variant 10, 100, 1000
-    - Fibonacci
-        - Variant 1, 10, 100,  1000, 10000
-    - SHA256
-        - Variant 1k, 10k Bytes
-    - Pederson Hash
-        - Variant 1k, 10k Bytes
-    - Poseidon
-        - Variant 1k, 10k Bytes
-    - RPO Hash
-        - Variant 1k, 10k Bytes
-    - Keccak
-        - Variant 1k, 10k Bytes
-    - Merkle Tree Generation
-    - Merkle Tree Membership / Inclusion
-    - Merkle Tree Merge
-    - nth Prime
-        - Variant 1, 10, 100,  1000, 10000
-    - ECDSA Verification
-    - Elliptic Curve
-    - BLS Verification
-    - BLS Aggregation
-- Metrics to measure
-     - Prover time
-     - Verifier time
-     - Prover Space
-     - Verifier Space / Proof size
-     - Parallel execution
-     - CPU usage
-     - Memory usage
-     - Verifier gas consumtion
-     - Cycles Count 
-     - Developer friendliness
-- Facilitate program execution and visualize findings from the web interface.
+This repository hosts the source code and resources for benchmarking various Zero-Knowledge (ZK) proofs. It builds upon the original repositoritories of Halo2, Nexus, SP1, Jolt, Zokrates, and Powdr with our implementations of proofs including SHA256, Fibonacci, and Merkle Merge functionalities.
 
-### Projects
-- Scroll, Halo2 + KGZ
+Our aim is to benchmark the performance of these proofs, comparing them in terms of time, space, and other metrics. This comprehensive comparison will not only highlight the most popular ZK proofs and their implementations but also deepen our understanding of their inner workings and proving systems.
+
+## Goals
+
+- **Benchmark Operations:**
+  - **Fibonacci:** Variants 1, 10, 100, 1000, 10000
+  - **SHA256:** Variants 1k, 10k Bytes
+  - **Poseidon:** 
+
+- **Additional Benchmarks:**
+  - Arithmetic Operations: Addition, Subtraction, Multiplication, Division
+  - Loop: Variants 10, 100, 1000
+  - Hash Functions: Pederson, Poseidon, RPO, Keccak (Variants 1k, 10k Bytes)
+  - Merkle Tree: Generation, Membership/Inclusion, Merge
+  - nth Prime: Variants 1, 10, 100, 1000, 10000
+  - Cryptographic Verifications: ECDSA, Elliptic Curve, BLS Verification, BLS Aggregation
+
+## Proving Systems
+
+- Halo2
 - Nexus zkVM
 - Risc Zero
-- Stakeware - Cairo
-- SP1, Plonky3
+- Groth16 (Circom)
+- SP1
 - Jolt
-- powdr
-- Noir
-- Aleo
-- ZoKrates
-- ZKSync Era
-- Arkworks
-- Circom
-- Mina
-- ~~gnark~~
-- ~~Miden VM~~
+- Powdr
 
-### Benchmark Machine Specification
-- Macbook M1 Pro - Core 8 - Memory 8 GB
-- AlmaLinux 8.10 - Core 16 - Memory 32 GB - Disk 1 TB
-- Intel(R) - Core 4 - Memory 8GB - 
+## Metrics
 
-### Projects
+- Prover Time
+- Verifier Time
+- Prover Space
+- Verifier Space
+- Proof Size
+- Parallel Execution
+- CPU Usage
+- Memory Usage
+- Verifier Gas Consumption
+- Cycles Count
+- Developer Friendliness
+
+## Benchmark Machine Specifications
+
+- **Macbook M1 Pro:** Core 8, Memory 8 GB
+- **AlmaLinux 8.10:** Core 16, Memory 32 GB, Disk 1 TB
+- **Windows 11:** Core 16, Memory 32 GB, Disk 1 TB
+- **Intel(R):** Core 4 - Memory 8GB
+
+## Project Structure
+
 - [Halo2](./halo2/)
-- [Nexus](nexus/)
+- [Nexus](./nexus/)
 - [SP1](./sp1/)
 - [Jolt](./jolt/)
 - [Zokrates](./zokrates/)
 - [Powdr](./powdr/)
+- [Groth16](./groth16/)
+- [Risc Zero](./risc-zero/)
 
-### Reports
+## Reports
+The reports can be found in the [reports](./reports/) directory.
 - [Reports](./reports/)
-    - [Halo2](./reports/halo2/)
-    - [Nexus](./reports/nexus/)
-    - [Jolt](./reports/jolt/)
-    - [SP1](./reports/sp1/)
-    - [Zokrates](./reports/zokrates/)
-    - [Powdr](./reports/powdr/)
+  - [Halo2](./reports/halo2/)
+  - [Nexus](./reports/nexus/)
+  - [Jolt](./reports/jolt/)
+  - [SP1](./reports/sp1/)
+  - [Zokrates](./reports/zokrates/)
+  - [Powdr](./reports/powdr/)
+
+## Installation
+
+Each project has its own README file with instructions on how to install the dependencies and run the benchmarks.
+
+## Contributors
+
+This project is part of the ZK and Scaling Bootcamp organized by Encode club.  
+Tanmoy : https://x.com/mtanm0y
+Rosemary :https://x.com/rosekoikara
+Anubha
+Yogesh : https://x.com/yogesh_eth
+
+## Acknowledgments
+Special thanks to the ZK and Scaling Bootcamp team for organizing this event and providing us with the opportunity to learn and contribute to the ZK space.

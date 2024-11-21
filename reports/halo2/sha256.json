@@ -1,0 +1,10 @@
+[
+  {
+    "size": 256,
+    "prover_time_secs": 15.623142255,
+    "verifier_time_secs": 0.132772605,
+    "proof_size_bytes": 4064,
+    "memory_usage_bytes": 1133988,
+    "verification_result": true
+  }
+]

@@ -1,0 +1,15 @@
+{
+  "name": "benchmark_circuits",
+  "version": "1.0.0",
+  "description": "This repository contains the benchmark for circom circuits. In order to understand the time and memory consumption a report csv file is generated for each circuit. The report contains the following information:",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "circomlib": "^2.0.5",
+    "circomlibjs": "^0.0.8"
+  }
+}

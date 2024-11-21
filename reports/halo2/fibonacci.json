@@ -1,0 +1,50 @@
+[
+  {
+    "input": 1,
+    "prover_time_secs": 0.199383786,
+    "verifier_time_secs": 0.003175981,
+    "proof_size_bytes": 1664,
+    "memory_usage_bytes": 8028,
+    "verification_result": true
+  },
+  {
+    "input": 10,
+    "prover_time_secs": 0.192046013,
+    "verifier_time_secs": 0.003598837,
+    "proof_size_bytes": 1664,
+    "memory_usage_bytes": 8292,
+    "verification_result": true
+  },
+  {
+    "input": 100,
+    "prover_time_secs": 0.201695324,
+    "verifier_time_secs": 0.004171704,
+    "proof_size_bytes": 1664,
+    "memory_usage_bytes": 8292,
+    "verification_result": true
+  },
+  {
+    "input": 1000,
+    "prover_time_secs": 0.195129845,
+    "verifier_time_secs": 0.003381191,
+    "proof_size_bytes": 1664,
+    "memory_usage_bytes": 8292,
+    "verification_result": true
+  },
+  {
+    "input": 10000,
+    "prover_time_secs": 0.195129215,
+    "verifier_time_secs": 0.003414638,
+    "proof_size_bytes": 1664,
+    "memory_usage_bytes": 8292,
+    "verification_result": true
+  },
+  {
+    "input": 100000,
+    "prover_time_secs": 0.194962141,
+    "verifier_time_secs": 0.00354098,
+    "proof_size_bytes": 1664,
+    "memory_usage_bytes": 8292,
+    "verification_result": true
+  }
+]
