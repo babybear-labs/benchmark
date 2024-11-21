@@ -1,177 +1,36 @@
 #![cfg_attr(target_arch = "riscv32", no_std, no_main)]
-// use sha2::{Sha256, Digest};
-extern crate alloc;
-use alloc::vec::Vec;
+use starknet_crypto::{PoseidonHasher};
+use starknet_types_core::felt::Felt;
 
-// pub fn fib(n: u32) -> u128 {
-//     let mut a = 0u128;
-//     let mut b = 1u128;
-//     for _ in 0..n {
-//         let c = a.wrapping_add(b);
-//         a = b;
-//         b = c;
-//     }
-//     b
-// }
+/// Converts an arbitrary byte slice into `Felt` elements.
+fn bytes_to_felts(input: &[u8]) -> Vec<Felt> {
+    const FELT_BYTE_SIZE: usize = 31; // Maximum bytes for a Felt element in BN254
 
-
-// | extern crate std;
-// | ^^^^^^^^^^^^^^^^^ can't find crate
-// fn sha2(input: &[u8]) -> [u8; 32] {
-//     let mut hasher = Sha256::new();
-//     hasher.update(input);
-//     let result = hasher.finalize();
-//     Into::<[u8; 32]>::into(result)
-// }
-
-use nexus_rt::{print, println};
-#[inline]
-fn rotl64(x: u64, y: u32) -> u64 {
-    x.rotate_left(y)
+    input
+        .chunks(FELT_BYTE_SIZE)
+        .map(|chunk| {
+            let mut buffer = [0u8; 32]; // BN254 requires 32 bytes, pad with zeroes
+            buffer[32 - chunk.len()..].copy_from_slice(chunk); // Right-align the chunk
+            Felt::from_bytes_be(&buffer)
+        })
+        .collect()
 }
 
-fn sha3_keccakf(st: &mut [u64; 25]) {
-    const keccakf_rndc: [u64; 24] = [
-        0x0000000000000001,
-        0x0000000000008082,
-        0x800000000000808a,
-        0x8000000080008000,
-        0x000000000000808b,
-        0x0000000080000001,
-        0x8000000080008081,
-        0x8000000000008009,
-        0x000000000000008a,
-        0x0000000000000088,
-        0x0000000080008009,
-        0x000000008000000a,
-        0x000000008000808b,
-        0x800000000000008b,
-        0x8000000000008089,
-        0x8000000000008003,
-        0x8000000000008002,
-        0x8000000000000080,
-        0x000000000000800a,
-        0x800000008000000a,
-        0x8000000080008081,
-        0x8000000000008080,
-        0x0000000080000001,
-        0x8000000080008008,
-    ];
-    const keccakf_rotc: [u32; 24] = [
-        1, 3, 6, 10, 15, 21, 28, 36, 45, 55, 2, 14, 27, 41, 56, 8, 25, 43, 62, 18, 39, 61, 20, 44,
-    ];
-    const keccakf_piln: [u32; 24] = [
-        10, 7, 11, 17, 18, 3, 5, 16, 8, 21, 24, 4, 15, 23, 19, 13, 12, 2, 20, 14, 22, 9, 6, 1,
-    ];
+/// Ref: https://github.com/xJonathanLEI/starknet-rs/blob/master/starknet-crypto/benches/poseidon_hash.rs
+#[no_mangle]
+pub fn pos() {
+    let input = &[5u8; 32];
+    // Convert input into `Felt` chunks
+    let felt_chunks = bytes_to_felts(input);
 
-    for r in 0..24 {
-        // Theta
-        let mut bc: [u64; 5] = [0; 5];
-        for i in 0..5 {
-            bc[i] = st[i] ^ st[i + 5] ^ st[i + 10] ^ st[i + 15] ^ st[i + 20];
-        }
-
-        for i in 0..5 {
-            let t: u64 = bc[(i + 4) % 5] ^ rotl64(bc[(i + 1) % 5], 1);
-            for j in [0, 5, 10, 15, 20] {
-                st[j + i] ^= t;
-            }
-        }
-
-        // Rho Pi
-        let mut t: u64 = st[1];
-        for i in 0..24 {
-            let j: u32 = keccakf_piln[i];
-            bc[0] = st[j as usize];
-            st[j as usize] = rotl64(t, keccakf_rotc[i]);
-            t = bc[0];
-        }
-
-        //  Chi
-        for j in [0, 5, 10, 15, 20] {
-            for i in 0..5 {
-                bc[i] = st[j + i];
-            }
-            for i in 0..5 {
-                st[j + i] ^= (!bc[(i + 1) % 5]) & bc[(i + 2) % 5];
-            }
-        }
-
-        //  Iota
-        st[0] ^= keccakf_rndc[r];
+    let mut hasher = PoseidonHasher::new();
+    for chunk in &felt_chunks {
+        hasher.update(*chunk);
     }
-}
-
-struct Sha3 {
-    pt: i32,
-    rsiz: i32,
-    mdlen: i32,
-    data: Data,
-}
-union Data {
-    b: [u8; 200],
-    q: [u64; 25],
-}
-
-fn sha3_init(mdlen: i32) -> Sha3 {
-    Sha3 {
-        pt: 0,
-        rsiz: 200 - 2 * mdlen,
-        mdlen,
-        data: Data { q: [0; 25] },
-    }
-}
-
-fn sha3_update(c: &mut Sha3, data: &[u8]) {
-    let len = data.len();
-
-    let mut j = c.pt;
-    for i in 0..len {
-        unsafe {
-            c.data.b[j as usize] ^= data[i];
-        }
-        j += 1;
-        if j >= c.rsiz {
-            unsafe {
-                sha3_keccakf(&mut c.data.q);
-            }
-            j = 0;
-        }
-    }
-    c.pt = j;
-}
-
-fn ethash_final(c: &mut Sha3) -> Vec<u8> {
-    unsafe {
-        c.data.b[c.pt as usize] ^= 0x01; // SHA3 uses 0x06
-        c.data.b[(c.rsiz - 1) as usize] ^= 0x80;
-        sha3_keccakf(&mut c.data.q);
-    }
-
-    let mut v = Vec::new();
-    for i in 0..c.mdlen {
-        unsafe {
-            v.push(c.data.b[i as usize]);
-        }
-    }
-    v
-}
-
-fn hash(bytes: &[u8]) {
-    let mut c = sha3_init(32);
-    sha3_update(&mut c, bytes);
-    let v = ethash_final(&mut c);
-    for b in v {
-        print!("{b:x}");
-    }
-    println!();
+    let hash = hasher.finalize();
 }
 
 #[nexus_rt::main]
 fn main() {
-    // let n = 1000;
-    let input = &[5u8; 32];
-    let output = hash(input);
-    // let result = fib(n);
-    // assert_eq!(result, 101760851154547862183199185335023067211);
+    pos();
 }
