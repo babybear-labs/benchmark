@@ -258,3 +258,67 @@ Proof generation took: 10.842923834s
 
 
 ## Poseidon
+```rust
+use starknet_crypto::poseidon_hash_single;
+use starknet_types_core::felt::Felt;
+
+/// Ref: https://github.com/xJonathanLEI/starknet-rs/blob/master/starknet-crypto/benches/poseidon_hash.rs
+#[no_mangle]
+pub fn poseidon_hash() {
+    let input = &[5u8; 32];
+    let elem = Felt::from_bytes_be(input);
+    let hash = poseidon_hash_single(elem).to_fixed_hex_string();
+}
+```
+
+### Results
+
+- Input: 32 Bytes
+```shell
+
+1st Run
+
+Running powdr-riscv executor in fast mode...
+Fast executor took: 509.251917ms
+Trace length: 286652
+Loading program ZK setup.
+Running witness and proof generation for 2 chunks...
+[00:00:22 (ETA: 00:00:00)] ████████████████████ 100% - 20454 rows/s, 1637k identities/s, 89% progressGenerating proof...
+Proof generation took: 13.594827208s
+[00:00:08 (ETA: 00:00:00)] ████████████████████ 100% - 124533 rows/s, 9090k identities/s, 100% progressGenerating proof...
+Proof generation took: 7.946486125s
+
+2nd Run
+
+Running powdr-riscv executor in fast mode...
+Fast executor took: 512.843792ms
+Trace length: 286652
+Creating program ZK setup. This has to be done only once per program.
+Running witness and proof generation for 2 chunks...
+[00:00:28 (ETA: 00:00:00)] ████████████████████ 100% - 18141 rows/s, 1452k identities/s, 89% progressGenerating proof...
+Proof generation took: 28.434556708s
+[00:00:09 (ETA: 00:00:00)] ████████████████████ 100% - 111544 rows/s, 8142k identities/s, 100% progressGenerating proof...
+Proof generation took: 9.714906s
+```
+
+
+- Input; 100 Bytes
+```shell
+Fast executor took: 1.063086s
+Trace length: 836956
+Creating program ZK setup. This has to be done only once per program.
+Running witness and proof generation for 4 chunks...
+[00:00:47 (ETA: 00:00:00)] ████████████████████ 100% - 11408 rows/s, 916k identities/s, 89% progress                     Generating proof...
+Proof generation took: 30.177880459s
+[00:00:37 (ETA: 00:00:00)] ████████████████████ 100% - 12310 rows/s, 989k identities/s, 89% progress                     Generating proof...
+Proof generation took: 46.75899225s
+[00:00:45 (ETA: 00:00:00)] ████████████████████ 100% - 11411 rows/s, 900k identities/s, 89% progress                     Generating proof...
+Proof generation took: 45.871270584s
+[00:00:22 (ETA: 00:00:00)] ████████████████████ 100% - 77261 rows/s, 5640k identities/s, 100% progress                   Generating proof...
+Proof generation took: 48.474264875s
+```
+
+- Input; 1k Bytes
+```shell
+
+```
