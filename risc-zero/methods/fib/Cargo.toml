@@ -1,0 +1,15 @@
+[package]
+name = "fib"
+version = "0.1.0"
+edition = "2021"
+
+[workspace]
+
+[dependencies]
+nalgebra = "0.32"
+# If you want to try (experimental) std support, add `features = [ "std" ]` to risc0-zkvm
+risc0-zkvm = { version = "1.1.2", default-features = false, features = [ "std" ] }
+
+[profile.release]
+lto = true
+opt-level = 3
