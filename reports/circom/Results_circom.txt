@@ -1,0 +1,358 @@
+﻿Fibonacci
+template Fibonacci(n) {
+  assert(n >= 2);
+  signal input in[2];
+  signal output out;
+
+
+  signal fib[n+1];
+  fib[0] <== in[0];
+  fib[1] <== in[1];
+  for (var i = 2; i <= n; i++) {
+    fib[i] <== fib[i-2] + fib[i-1];
+  }
+
+
+  out <== fib[n];
+}
+
+
+Results:
+10
+[fibonacci_10] Compile Circuit: 0.58 seconds 44480.0 KB
+[fibonacci_10] Constraints: 9
+command_output: 
+ 2.42 186728
+
+
+[fibonacci_10] Setup Prover: 2.42 seconds 186728.0 KB
+command_output: 
+ 0.87 167200
+
+
+[fibonacci_10] Prover: 0.87 seconds 167200.0 KB
+command_output: 
+ 0.77 153984
+
+
+[fibonacci_10] Verifier: 0.77 seconds 153984.0 KB
+measures:  {'CIRCUIT': 'fibonacci_10', 'INPUT SIZE': 'fibonacci', 'CONSTRAINTS': 9, 'COMPILE_TIME': 0.58, 'COMPILE_MEMORY': 44480.0, 'SETUP_TIME': 2.42, 'SETUP_MEMORY': 186728.0, 'PROVER_TIME': 0.87, 'PROVER_MEMORY': 167200.0, 'VERIFIER_TIME': 0.77, 'VERIFIER_MEMORY': 153984.0}
+
+
+100
+[fibonacci_100] Compile Circuit: 0.31 seconds 45972.0 KB
+[fibonacci_100] Constraints: 99
+command_output: 
+ 1.76 205504
+
+
+[fibonacci_100] Setup Prover: 1.76 seconds 205844.0 KB
+command_output: 
+ 0.76 184692
+
+
+[fibonacci_100] Prover: 0.76 seconds 184692.0 KB
+command_output: 
+ 0.69 177296
+
+
+[fibonacci_100] Verifier: 0.69 seconds 177296.0 KB
+measures:  {'CIRCUIT': 'fibonacci_100', 'INPUT SIZE': 'fibonacci', 'CONSTRAINTS': 99, 'COMPILE_TIME': 0.31, 'COMPILE_MEMORY': 45972.0, 'SETUP_TIME': 1.76, 'SETUP_MEMORY': 205844.0, 'PROVER_TIME': 0.76, 'PROVER_MEMORY': 184692.0, 'VERIFIER_TIME': 0.69, 'VERIFIER_MEMORY': 177296.0}
+
+
+1000
+[fibonacci_1000] Compile Circuit: 0.3 seconds 56608.0 KB
+[fibonacci_1000] Constraints: 999
+command_output: 
+ 2.07 217224
+
+
+[fibonacci_1000] Setup Prover: 2.07 seconds 217492.0 KB
+command_output: 
+ 0.87 229944
+
+
+[fibonacci_1000] Prover: 0.87 seconds 229944.0 KB
+command_output: 
+ 0.68 175916
+
+
+[fibonacci_1000] Verifier: 0.68 seconds 175916.0 KB
+measures:  {'CIRCUIT': 'fibonacci_1000', 'INPUT SIZE': 'fibonacci', 'CONSTRAINTS': 999, 'COMPILE_TIME': 0.3, 'COMPILE_MEMORY': 56608.0, 'SETUP_TIME': 2.07, 'SETUP_MEMORY': 217492.0, 'PROVER_TIME': 0.87, 'PROVER_MEMORY': 229944.0, 'VERIFIER_TIME': 0.68, 'VERIFIER_MEMORY': 175916.0}
+
+
+10000
+[fibonacci_10000] Compile Circuit: 0.7 seconds 59156.0 KB
+[fibonacci_10000] Constraints: 9999
+command_output: 
+ 7.42 312036
+
+
+[fibonacci_10000] Setup Prover: 7.42 seconds 312348.0 KB
+command_output: 
+ 1.75 466280
+
+
+[fibonacci_10000] Prover: 1.75 seconds 466280.0 KB
+command_output: 
+ 0.81 177012
+
+
+[fibonacci_10000] Verifier: 0.81 seconds 177012.0 KB
+measures:  {'CIRCUIT': 'fibonacci_10000', 'INPUT SIZE': 'fibonacci', 'CONSTRAINTS': 9999, 'COMPILE_TIME': 0.7, 'COMPILE_MEMORY': 59156.0, 'SETUP_TIME': 7.42, 'SETUP_MEMORY': 312348.0, 'PROVER_TIME': 1.75, 'PROVER_MEMORY': 466280.0, 'VERIFIER_TIME': 0.81, 'VERIFIER_MEMORY': 177012.0}
+
+
+100000
+[fibonacci_100000] Compile Circuit: 4.26 seconds 305812.0 KB
+[fibonacci_100000] Constraints: 99999
+command_output: 
+ 18.94 779472
+
+
+[fibonacci_100000] Setup Prover: 18.94 seconds 780320.0 KB
+command_output: 
+ 4.81 1067972
+
+
+[fibonacci_100000] Prover: 4.81 seconds 1070296.0 KB
+command_output: 
+ 0.74 175532
+
+
+[fibonacci_100000] Verifier: 0.74 seconds 175532.0 KB
+measures:  {'CIRCUIT': 'fibonacci_100000', 'INPUT SIZE': 'fibonacci', 'CONSTRAINTS': 99999, 'COMPILE_TIME': 4.26, 'COMPILE_MEMORY': 305812.0, 'SETUP_TIME': 18.94, 'SETUP_MEMORY': 780320.0, 'PROVER_TIME': 4.81, 'PROVER_MEMORY': 1070296.0, 'VERIFIER_TIME': 0.74, 'VERIFIER_MEMORY': 175532.0}
+
+
+
+
+SHA256:
+template Sha256Bytes(n) {
+  signal input in[n];
+  signal output out[32];
+
+
+  component byte_to_bits[n];
+  for (var i = 0; i < n; i++) {
+    byte_to_bits[i] = Num2Bits(8);
+    byte_to_bits[i].in <== in[i];
+  }
+
+
+  component sha256 = Sha256(n*8);
+  for (var i = 0; i < n; i++) {
+    for (var j = 0; j < 8; j++) {
+      sha256.in[i*8+j] <== byte_to_bits[i].out[7-j];
+    }
+  }
+
+
+  component bits_to_bytes[32];
+  for (var i = 0; i < 32; i++) {
+    bits_to_bytes[i] = Bits2Num(8);
+    for (var j = 0; j < 8; j++) {
+      bits_to_bytes[i].in[7-j] <== sha256.out[i*8+j];
+    }
+    out[i] <== bits_to_bytes[i].out;
+  }
+}
+
+
+Results:
+32B
+
+
+[sha256_bytes_32] Compile Circuit: 4.29 seconds 262552.0 KB
+[sha256_bytes_32] Constraints: 31584
+command_output: 
+ 15.49 545868
+
+
+[sha256_bytes_32] Setup Prover: 15.49 seconds 545868.0 KB
+command_output: 
+ 2.43 564824
+
+
+[sha256_bytes_32] Prover: 2.43 seconds 564824.0 KB
+command_output: 
+ 0.80 176992
+
+
+[sha256_bytes_32] Verifier: 0.8 seconds 176992.0 KB
+measures:  {'CIRCUIT': 'sha256_bytes_32', 'INPUT SIZE': '32', 'CONSTRAINTS': 31584, 'COMPILE_TIME': 4.29, 'COMPILE_MEMORY': 262552.0, 'SETUP_TIME': 15.49, 'SETUP_MEMORY': 545868.0, 'PROVER_TIME': 2.43, 'PROVER_MEMORY': 564824.0, 'VERIFIER_TIME': 0.8, 'VERIFIER_MEMORY': 176992.0}
+
+
+100B
+
+
+[sha256_bytes_100] Compile Circuit: 5.67 seconds 430488.0 KB
+[sha256_bytes_100] Constraints: 63460
+command_output: 
+ 27.31 836584
+
+
+[sha256_bytes_100] Setup Prover: 27.31 seconds 836584.0 KB
+command_output: 
+ 3.44 791336
+
+
+[sha256_bytes_100] Prover: 3.44 seconds 791336.0 KB
+command_output: 
+ 0.97 176512
+
+
+[sha256_bytes_100] Verifier: 0.97 seconds 176512.0 KB
+measures:  {'CIRCUIT': 'sha256_bytes_100', 'INPUT SIZE': '100', 'CONSTRAINTS': 63460, 'COMPILE_TIME': 5.67, 'COMPILE_MEMORY': 430488.0, 'SETUP_TIME': 27.31, 'SETUP_MEMORY': 836584.0, 'PROVER_TIME': 3.44, 'PROVER_MEMORY': 791336.0, 'VERIFIER_TIME': 0.97, 'VERIFIER_MEMORY': 176512.0}
+
+
+1024B
+[sha256_bytes_1024] Compile Circuit: 55.86 seconds 3528280.0 KB
+[sha256_bytes_1024] Constraints: 540736
+command_output: 
+ 202.60 2880348
+
+
+[sha256_bytes_1024] Setup Prover: 202.6 seconds 3267144.0 KB
+command_output: 
+ 46.07 3104048
+
+
+[sha256_bytes_1024] Prover: 46.07 seconds 3920848.0 KB
+command_output: 
+ 1.14 183288
+
+
+[sha256_bytes_1024] Verifier: 1.14 seconds 183288.0 KB
+measures:  {'CIRCUIT': 'sha256_bytes_1024', 'INPUT SIZE': '1024', 'CONSTRAINTS': 540736, 'COMPILE_TIME': 55.86, 'COMPILE_MEMORY': 3528280.0, 'SETUP_TIME': 202.6, 'SETUP_MEMORY': 3267144.0, 'PROVER_TIME': 46.07, 'PROVER_MEMORY': 3920848.0, 'VERIFIER_TIME': 1.14, 'VERIFIER_MEMORY': 183288.0}
+
+
+
+
+
+
+Poseidon Hash:
+pragma circom 2.0.0;
+include "../../node_modules/circomlib/circuits/poseidon.circom";
+
+
+template SpongeHash(inputs_length){
+    signal input in[inputs_length];
+    signal output hash;
+
+
+    var k = 0;
+    var hash_blocks = (inputs_length\15) + 1;
+    var block_index = 0;
+
+
+    component poseidon_hash[hash_blocks];
+    signal inside_hash[hash_blocks];
+    signal frame[hash_blocks][16];
+
+
+    for (var i=0; i<inputs_length; i++) {
+        frame[block_index][k] <== in[i];
+
+
+        if (k == 15){
+
+
+            //*  START POSEIDON HASH
+            poseidon_hash[block_index] = Poseidon(16);
+            for (var j=0; j<16; j++)
+                poseidon_hash[block_index].inputs[j] <== frame[block_index][j];
+            inside_hash[block_index] <== poseidon_hash[block_index].out;
+            block_index++;
+            //*/ END POSEIDON HASH
+           
+            frame[block_index][0] <== inside_hash[block_index - 1];
+            k = 1;
+        } else
+            k++;
+       
+    }
+   
+    if (inputs_length%16 != 0){
+
+
+        //*  START POSEIDON HASH
+         poseidon_hash[block_index] = Poseidon(16);
+         for (var j=0; j<16; j++)
+             poseidon_hash[block_index].inputs[j] <== j<k ? frame[block_index][j] : 0;
+         hash <== poseidon_hash[block_index].out;
+        //*/ END POSEIDON HASH
+   
+     }else
+        hash <== frame[block_index][0];
+   
+   
+   
+}
+
+
+//MAIN component main = SpongeHash(NUM);
+
+
+Results:
+32B
+[poseidon_sponge_32] Compile Circuit: 5.23 seconds 637012.0 KB
+[poseidon_sponge_32] Constraints: 4184
+command_output: 
+ 6.46 271296
+
+
+[poseidon_sponge_32] Setup Prover: 6.46 seconds 271296.0 KB
+command_output: 
+ 1.19 373560
+
+
+[poseidon_sponge_32] Prover: 1.19 seconds 373560.0 KB
+command_output: 
+ 0.72 178188
+
+
+[poseidon_sponge_32] Verifier: 0.72 seconds 178188.0 KB
+measures:  {'CIRCUIT': 'poseidon_sponge_32', 'INPUT SIZE': '32', 'CONSTRAINTS': 4184, 'COMPILE_TIME': 5.23, 'COMPILE_MEMORY': 637012.0, 'SETUP_TIME': 6.46, 'SETUP_MEMORY': 271296.0, 'PROVER_TIME': 1.19, 'PROVER_MEMORY': 373560.0, 'VERIFIER_TIME': 0.72, 'VERIFIER_MEMORY': 178188.0}
+
+
+
+
+100B
+[poseidon_sponge_100] Compile Circuit: 7.98 seconds 636844.0 KB
+[poseidon_sponge_100] Constraints: 14644
+command_output: 
+ 11.19 353748
+
+
+[poseidon_sponge_100] Setup Prover: 11.19 seconds 353748.0 KB
+command_output: 
+ 1.77 477136
+
+
+[poseidon_sponge_100] Prover: 1.77 seconds 477136.0 KB
+command_output: 
+ 0.97 176236
+
+
+[poseidon_sponge_100] Verifier: 0.97 seconds 176236.0 KB
+measures:  {'CIRCUIT': 'poseidon_sponge_100', 'INPUT SIZE': '100', 'CONSTRAINTS': 14644, 'COMPILE_TIME': 7.98, 'COMPILE_MEMORY': 636844.0, 'SETUP_TIME': 11.19, 'SETUP_MEMORY': 353748.0, 'PROVER_TIME': 1.77, 'PROVER_MEMORY': 477136.0, 'VERIFIER_TIME': 0.97, 'VERIFIER_MEMORY': 176236.0}
+
+
+1024B
+[poseidon_sponge_1024] Compile Circuit: 10.59 seconds 651656.0 KB
+[poseidon_sponge_1024] Constraints: 142256
+command_output: 
+ 50.75 1006772
+
+
+[poseidon_sponge_1024] Setup Prover: 50.75 seconds 1007028.0 KB
+command_output: 
+ 13.88 1349436
+
+
+[poseidon_sponge_1024] Prover: 13.88 seconds 1361740.0 KB
+command_output: 
+ 1.00 179976
+
+
+[poseidon_sponge_1024] Verifier: 1.0 seconds 179976.0 KB
+measures:  {'CIRCUIT': 'poseidon_sponge_1024', 'INPUT SIZE': '1024', 'CONSTRAINTS': 142256, 'COMPILE_TIME': 10.59, 'COMPILE_MEMORY': 651656.0, 'SETUP_TIME': 50.75, 'SETUP_MEMORY': 1007028.0, 'PROVER_TIME': 13.88, 'PROVER_MEMORY': 1361740.0, 'VERIFIER_TIME': 1.0, 'VERIFIER_MEMORY': 179976.0}
