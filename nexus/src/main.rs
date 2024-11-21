@@ -1,4 +1,6 @@
 #![cfg_attr(target_arch = "riscv32", no_std, no_main)]
+extern crate alloc;
+use alloc::vec::Vec;
 use starknet_crypto::{PoseidonHasher};
 use starknet_types_core::felt::Felt;
 
