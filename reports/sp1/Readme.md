@@ -309,3 +309,44 @@ Successfully generated proof!
 2024-11-20T21:02:53.576195Z  INFO verify: close time.busy=1.17s time.idle=2.62µs
 Successfully verified proof!
 ```
+
+## Poseidon
+```rust
+/// Converts an arbitrary byte slice into `Felt` elements.
+fn bytes_to_felts(input: &[u8]) -> Vec<Felt> {
+    const FELT_BYTE_SIZE: usize = 31; // Maximum bytes for a Felt element in BN254
+
+    input
+        .chunks(FELT_BYTE_SIZE)
+        .map(|chunk| {
+            let mut buffer = [0u8; 32]; // BN254 requires 32 bytes, pad with zeroes
+            buffer[32 - chunk.len()..].copy_from_slice(chunk); // Right-align the chunk
+            Felt::from_bytes_be(&buffer)
+        })
+        .collect()
+}
+
+/// Ref: https://github.com/xJonathanLEI/starknet-rs/blob/master/starknet-crypto/benches/poseidon_hash.rs
+#[no_mangle]
+pub fn pos() {
+    let input = &[5u8; 32];
+    // Convert input into `Felt` chunks
+    let felt_chunks = bytes_to_felts(input);
+
+    let mut hasher = PoseidonHasher::new();
+    for chunk in &felt_chunks {
+        hasher.update(*chunk);
+    }
+    let hash = hasher.finalize();
+}
+```
+
+### Result
+- Input 32 bytes
+```
+2024-11-21T22:20:05.646253Z  INFO prove_core: summary: cycles=39479, gas=48514, e2e=113.374450708s, khz=1.09, proofSize=2876912
+2024-11-21T22:20:05.660716Z  INFO prove_core: close time.busy=112.5s time.idle=205ms
+Successfully generated proof!
+2024-11-21T22:20:05.871122Z  INFO verify: close time.busy=509ms time.idle=4.42µs
+Successfully verified proof!
+```
