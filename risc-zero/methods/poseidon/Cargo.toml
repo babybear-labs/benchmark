@@ -1,0 +1,24 @@
+[package]
+name = "poseidon"
+version = "0.1.0"
+edition = "2021"
+
+[workspace]
+
+[dependencies]
+risc0-zkvm = { version = "1.1.2", default-features = false }
+shared = { path = "../../shared" }
+starknet-crypto = "0.7.3"
+starknet-types-core = "0.1.7"
+
+[features]
+default = ["std"]
+std = [
+    "risc0-zkvm/std", 
+    "starknet-crypto/std", 
+    "starknet-types-core/std"
+]
+
+[profile.release]
+lto = true
+opt-level = 3

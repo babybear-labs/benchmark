@@ -1,7 +1,7 @@
 extern crate host;
 
 use benchy::{benchmark, BenchmarkRun};
-use host::{fib::fib, merkle, sha::sha};
+use host::{fib::fib, poseidon::poseidon, sha::sha};
 use risc0_zkvm::{Receipt, SessionStats};
 
 // #[benchmark]
@@ -11,11 +11,11 @@ use risc0_zkvm::{Receipt, SessionStats};
 // }
 
 #[benchmark("Fibonacci", [
-    ("1", 1),
-    ("10", 10),
-    ("100", 100),
-    ("1000", 1000),
-    ("10000", 10000),
+    // ("1", 1),
+    // ("10", 10),
+    // ("100", 100),
+    // ("1000", 1000),
+    // ("10000", 10000),
     ("100000", 100000),
 ])]
 fn fibonacci(b: &mut BenchmarkRun, n: u32) {
@@ -25,8 +25,8 @@ fn fibonacci(b: &mut BenchmarkRun, n: u32) {
 
 #[benchmark("SHA256", [
     ("1k bytes", 1),
-    ("10k bytes", 10),
-    ("100k bytes", 100),
+    // ("10k bytes", 10),
+    // ("100k bytes", 100),
 ])]
 fn sha256(b: &mut BenchmarkRun, n: usize) {
     let prove = sha(n);
@@ -54,9 +54,10 @@ fn sha256(b: &mut BenchmarkRun, n: usize) {
 //     log_session(&b.run(prove), b);
 // }
 
-#[benchmark("Merkle Membership")]
-fn merkle_membership(b: &mut BenchmarkRun) {
-    let prove = merkle::merkle_membership(10);
+#[benchmark("Poseidon")]
+fn poseidon_hash(b: &mut BenchmarkRun) {
+    let n: u32 = 1;
+    let prove = poseidon(n);
     log_session(&b.run(prove), b);
 }
 
@@ -89,5 +90,5 @@ benchy::main!(
     sha256,
     // blake3_bench,
     // merkle_merge,
-    merkle_membership,
+    poseidon_hash,
 );
