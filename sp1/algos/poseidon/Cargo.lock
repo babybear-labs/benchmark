@@ -1677,6 +1677,8 @@ name = "fibonacci-lib"
 version = "0.1.0"
 dependencies = [
  "alloy-sol-types",
+ "starknet-crypto",
+ "starknet-types-core",
 ]
 
 [[package]]
@@ -2519,6 +2521,23 @@ dependencies = [
  "digest 0.10.7",
  "sha3-asm",
 ]
+
+[[package]]
+name = "lambdaworks-crypto"
+version = "0.10.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "bbc2a4da0d9e52ccfe6306801a112e81a8fc0c76aa3e4449fefeda7fef72bb34"
+dependencies = [
+ "lambdaworks-math",
+ "sha2",
+ "sha3",
+]
+
+[[package]]
+name = "lambdaworks-math"
+version = "0.10.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "d1bd2632acbd9957afc5aeec07ad39f078ae38656654043bf16e046fa2730e23"
 
 [[package]]
 name = "lazy_static"
@@ -4952,6 +4971,47 @@ checksum = "d91ed6c858b01f942cd56b37a94b3e0a1798290327d1236e4d9cf4eaca44d29d"
 dependencies = [
  "base64ct",
  "der",
+]
+
+[[package]]
+name = "starknet-crypto"
+version = "0.7.3"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "ded22ccf4cb9e572ce3f77de6066af53560cd2520d508876c83bb1e6b29d5cbc"
+dependencies = [
+ "crypto-bigint",
+ "hex",
+ "hmac",
+ "num-bigint 0.4.6",
+ "num-integer",
+ "num-traits",
+ "rfc6979",
+ "sha2",
+ "starknet-curve",
+ "starknet-types-core",
+ "zeroize",
+]
+
+[[package]]
+name = "starknet-curve"
+version = "0.5.1"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "bcde6bd74269b8161948190ace6cf069ef20ac6e79cd2ba09b320efa7500b6de"
+dependencies = [
+ "starknet-types-core",
+]
+
+[[package]]
+name = "starknet-types-core"
+version = "0.1.7"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "fa1b9e01ccb217ab6d475c5cda05dbb22c30029f7bb52b192a010a00d77a3d74"
+dependencies = [
+ "lambdaworks-crypto",
+ "lambdaworks-math",
+ "num-bigint 0.4.6",
+ "num-integer",
+ "num-traits",
 ]
 
 [[package]]

@@ -20,9 +20,11 @@ pub fn main() {
 
     // Compute the n'th fibonacci number using a function from the workspace lib crate.
     pos();
+    let a = 1;
+    let b = 2;
 
     // Encode the public values of the program.
-    let bytes = PublicValuesStruct::abi_encode(&PublicValuesStruct { n, 1, 2 });
+    let bytes = PublicValuesStruct::abi_encode(&PublicValuesStruct { n, a, b });
 
     // Commit to the public values of the program. The final proof will have a commitment to all the
     // bytes that were committed to.
