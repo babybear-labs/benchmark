@@ -1,5 +1,9 @@
 # SP1
 
+## Quickstart
+
+Go to each benchmark folder. Then go to `script` folder. Run.
+`cargo run --release -- --prove --n 10`
 
 
 Two different execution environment.

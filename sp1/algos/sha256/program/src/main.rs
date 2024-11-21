@@ -19,7 +19,7 @@ pub fn main() {
     let n = sp1_zkvm::io::read::<u32>();
 
     // Compute the n'th fibonacci number using a function from the workspace lib crate.
-    let input = &[5u8; 20000];
+    let input = &[5u8; 100];
     let a = sha2(input);
 
     // Encode the public values of the program.
