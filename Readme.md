@@ -61,6 +61,7 @@
 ### Benchmark Machine Specification
 - Macbook M1 Pro - Core 8 - Memory 8 GB
 - AlmaLinux 8.10 - Core 16 - Memory 32 GB - Disk 1 TB
+- Intel(R) - Core 4 - Memory 8GB - 
 
 ### Projects
 - [Halo2](./halo2/)
