@@ -1,1 +1,0 @@
-{"rustc":1266641762605002455,"features":"","declared_features":"","target":0,"profile":0,"path":0,"deps":[[6979672016594213099,"build_script_build",false,10878364789084495379]],"local":[{"RerunIfChanged":{"output":"riscv32i-unknown-none-elf/release/build/serde-f2090e260cd5e8a2/output","paths":["build.rs"]}}],"rustflags":[],"metadata":0,"config":0,"compile_kind":0}
