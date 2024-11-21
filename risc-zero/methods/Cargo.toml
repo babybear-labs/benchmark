@@ -11,7 +11,7 @@ methods = [
     "sha",
     "fib",
     "merkle",
-    "merkle_membership",
+    "poseidon",
 ]
 
 [profile.release]
