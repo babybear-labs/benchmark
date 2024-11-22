@@ -2,12 +2,14 @@ use jolt::Serializable;
 
 pub fn main() {
     let start = std::time::Instant::now();
-    let proving_time = std::time::Instant::now();
     let (prove, verify) = guest::build_pos();
+    let proving_time = std::time::Instant::now();
     let (output, proof) = prove();
     println!("Prover Time {:?}", proving_time.elapsed());
 
-    proof.save_to_file("proof.bin").expect("Failed to save proof to file");
+    proof
+        .save_to_file("proof.bin")
+        .expect("Failed to save proof to file");
     println!("Proof Size {:?}", proof.size().unwrap());
     println!();
 
