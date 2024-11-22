@@ -2,34 +2,37 @@
 
 ## Overview
 
-This repository hosts the source code and resources for benchmarking various Zero-Knowledge (ZK) proofs. It builds upon the original repositories of Halo2, RISC0, Nexus, SP1, Jolt, Groth16, and Powdr with our implementations of proofs including but not limited to SHA256, Fibonacci operations.
+This repository hosts the source code and resources for benchmarking various Zero-Knowledge (ZK) proofs. It builds upon the original repositories of Halo2, RISC0, Nexus, SP1, Jolt, Circom, and Powdr with our implementations of proofs including but not limited to SHA256, Fibonacci, Poseidon operations.
 
-Our aim is to benchmark the performance of these proofs, comparing them in terms of time, space, and other metrics. This comprehensive comparison will not only highlight the most popular ZK proofs and their implementations but also deepen our understanding of their inner workings and proving systems.
+Our aim is to benchmark the performance of these proofs, comparing them in terms of time, space, and other metrics. This comprehensive comparison will not only highlight the most popular ZK proofs and their implementations but also deepen our understanding of their inner workings, developer friendliness and proving systems.
 
 ## Goals
 
 - **Benchmark Operations:**
   - **Fibonacci:** Variants 1, 10, 100, 1000, 10000
-  - **SHA256:** Variants 1k, 10k Bytes
-  - **Poseidon:** 
+  - **SHA256:** Variants 32b, 1k, 10k Bytes
+  - **Poseidon:** Variants 32b, 100b
 
 - **Additional Benchmarks:**
   - Arithmetic Operations: Addition, Subtraction, Multiplication, Division
   - Loop: Variants 10, 100, 1000
-  - Hash Functions: Pederson, Poseidon, RPO, Keccak (Variants 1k, 10k Bytes)
+  - Hash Functions: Pederson, RPO, Keccak (Variants 1k, 10k Bytes)
   - Merkle Tree: Generation, Membership/Inclusion, Merge
   - nth Prime: Variants 1, 10, 100, 1000, 10000
   - Cryptographic Verifications: ECDSA, Elliptic Curve, BLS Verification, BLS Aggregation
 
 ## Proving Systems
 
-- Halo2
-- Nexus zkVM
-- Risc Zero
-- Groth16 (Circom)
-- SP1
-- Jolt
-- Powdr
+- [Halo2](./halo2/)
+- [Circom](./circom/)
+- [Nexus zkVM](./nexus/)
+- [Risc Zero](./risc-zero/)
+- [SP1](./sp1/)
+- [Jolt](./jolt/)
+- [Powdr](./powdr/)
+
+#### General overview of features of proving schemes
+<img width="600" alt="Screenshot 2024-11-22 at 3 44 30 PM" src="https://github.com/user-attachments/assets/2768a9c5-7477-4e7b-86aa-f80a85818c2f">
 
 ## Metrics
 
@@ -45,33 +48,36 @@ Our aim is to benchmark the performance of these proofs, comparing them in terms
 - Cycles Count
 - Developer Friendliness
 
+## Reports
+
+The detailed reports can be found in the [reports](./reports/) directory.
+- [Reports](./reports/)
+  - [Jolt](./reports/jolt/)
+  - [SP1](./reports/sp1/)
+  - [Powdr](./reports/powdr/)
+  - [Halo2](./reports/halo2/)
+  - [Nexus](./reports/nexus/)
+  - [Circom](./reports/circom/)
+ 
+#### Report Summary
+> Detailed report has metrics for other variants and additional operations.
+
+##### Fibonacci - 10000th number 
+<img width="600" alt="Screenshot 2024-11-22 at 4 04 17 PM" src="https://github.com/user-attachments/assets/77b6cc42-f532-4d21-a180-305ac2e62294">
+
+##### SHA256 - 1 KB Input
+<img width="600" alt="SHA256" src="https://github.com/user-attachments/assets/7e5d1d75-38d5-4c99-8045-5aa10845b6aa">
+
+##### Poseidon - 32 Byte input
+<img width="600" alt="Poseidon" src="https://github.com/user-attachments/assets/727276bf-1eb7-4b56-b03f-2a887df18a23">
+ 
 ## Benchmark Machine Specifications
 
 - **Macbook M1 Pro:** Core 8, Memory 8 GB
 - **AlmaLinux 8.10:** Core 16, Memory 32 GB, Disk 1 TB
 - **Windows 11:** Core 16, Memory 32 GB, Disk 1 TB
 - **Intel(R):** Core 4 - Memory 8GB
-
-## Project Structure
-
-- [Halo2](./halo2/)
-- [Nexus](./nexus/)
-- [SP1](./sp1/)
-- [Jolt](./jolt/)
-- [Zokrates](./zokrates/)
-- [Powdr](./powdr/)
-- [Groth16](./groth16/)
-- [Risc Zero](./risc-zero/)
-
-## Reports
-The reports can be found in the [reports](./reports/) directory.
-- [Reports](./reports/)
-  - [Halo2](./reports/halo2/)
-  - [Nexus](./reports/nexus/)
-  - [Jolt](./reports/jolt/)
-  - [SP1](./reports/sp1/)
-  - [Zokrates](./reports/zokrates/)
-  - [Powdr](./reports/powdr/)
+- **Macbook M2 Pro:** Core 16, Memory 16 GB
 
 ## Installation
 
@@ -80,10 +86,10 @@ Each project has its own README file with instructions on how to install the dep
 ## Contributors
 
 This project is part of the ZK and Scaling Bootcamp organized by Encode club.  
-Tanmoy : https://x.com/mtanm0y
-Rosemary :https://x.com/rosekoikara
-Anubha
-Yogesh : https://x.com/yogesh_eth
+- Tanmoy : https://x.com/mtanm0y
+- Rosemary :https://x.com/rosekoikara
+- Anubha
+- Yogesh : https://x.com/yogesh_eth
 
 ## Acknowledgments
 Special thanks to the ZK and Scaling Bootcamp team for organizing this event and providing us with the opportunity to learn and contribute to the ZK space.
