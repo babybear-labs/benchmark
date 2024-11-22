@@ -1,7 +1,7 @@
+use jolt::Serializable;
+use serde_json::Value;
 use std::fs::File;
 use std::io::BufReader;
-use serde_json::Value;
-use jolt::Serializable;
 
 pub fn main() {
     let file = File::open("../../inputs/data.json").expect("Failed to open input file");
@@ -18,12 +18,14 @@ pub fn main() {
     // println!("Prover Execution Time {:?}", prover_execution_trace_duration);
     println!();
 
-    let proving_time = std::time::Instant::now();
     let (prove_fib, verify_fib) = guest::build_fib();
+    let proving_time = std::time::Instant::now();
     let (output, proof) = prove_fib(n);
     println!("Prover Time {:?}", proving_time.elapsed());
 
-    proof.save_to_file("proof.bin").expect("Failed to save proof to file");
+    proof
+        .save_to_file("proof.bin")
+        .expect("Failed to save proof to file");
     println!("Proof Size {:?}", proof.size().unwrap());
     println!();
 
