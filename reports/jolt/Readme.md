@@ -1,8 +1,9 @@
 # Jolt
 
-Device: Macbook Pro M2 Pro - Core 10 - Memory 16 GB
+Hardware
+- Macbook Pro M2 Pro - Core 10 - Memory 16 GB
 
-### Addition
+## Addition
 ```rust
 fn add(a: u64, b: u64) -> u64 {
     a + b
@@ -23,7 +24,7 @@ Total Time elapsed: 31.505612833s
 ```
 
 
-### Subtraction
+## Subtraction
 ```rust
 fn mul(a: u64, b: u64) -> u64 {
     a - b
@@ -43,7 +44,7 @@ valid: true
 Total Time elapsed: 30.735463166s
 ```
 
-### Multiplication
+## Multiplication
 ```rust
 fn mul(a: u64, b: u64) -> u64 {
     a * b
@@ -65,7 +66,7 @@ Total Time elapsed: 36.249379542s
 
 ```
 
-### Division
+## Division
 
 ```rust
 fn div(a: u64, b: u64) -> u64 {
@@ -86,7 +87,9 @@ valid: true
 Total Time elapsed: 23.472635375s
 ```
 
-### Fibonacci
+## Fibonacci
+> variants: 1, 10, 100, 1000, 10000, 100000
+
 ```rust
 fn fib(n: u64) -> u128 {
     let mut a: u128 = 0;
@@ -97,7 +100,6 @@ fn fib(n: u64) -> u128 {
         a = b;
         b = sum;
     }
-
     b
 }
 ```
@@ -189,7 +191,8 @@ Trace length: 2800285
 zsh: killed     cargo run --release
 ```
 
-### SHA256
+## SHA256
+> variants: 32b, 1k bytes, 2k bytes, 3k bytes, 4k bytes, 5k bytes, 10k bytes
 ```rust
 fn sha2(input: &[u8]) -> [u8; 32] {
     let mut hasher = Sha256::new();
@@ -200,7 +203,7 @@ fn sha2(input: &[u8]) -> [u8; 32] {
 ```
 
 #### Result
-- 32 Bytes
+- Input Size: 32 Bytes
 ```shell
 Trace length: 4662
 Prover Time 34.90987475s
@@ -214,7 +217,7 @@ Total Time elapsed: 35.1319985s
 
 ```
 
-- 1k Bytes
+- Input Size: 1k Bytes
 ```shell
 Trace length: 62231
 Prover Time 26.391225s
@@ -227,7 +230,7 @@ valid: true
 Total Time elapsed: 26.644473791s
 ```
 
-- 2k bytes
+- Input Size: 2k bytes
 ```shell
 Trace length: 123315
 Prover Time 26.650922291s
@@ -240,7 +243,7 @@ valid: true
 Total Time elapsed: 26.912961083s
 ```
 
-- 3k bytes
+- Input Size: 3k bytes
 ```shell
 Trace length: 184823
 Prover Time 32.895957125s
@@ -253,7 +256,7 @@ valid: true
 Total Time elapsed: 33.181559083s
 ```
 
-- 4k bytes
+- Input Size: 4k bytes
 ```shell
 Trace length: 241759
 Prover Time 35.158499833s
@@ -266,7 +269,7 @@ valid: true
 Total Time elapsed: 35.458870084s
 ```
 
-- 5k Bytes
+- Input Size: 5k Bytes
 ```shell
 Trace length: 175
 thread 'main' panicked at /Users/muhtasim/.cargo/git/checkouts/jolt-6b856340b98daf0c/2e9002d/jolt-core/src/jolt/vm/read_write_memory.rs:251:9:
@@ -275,16 +278,15 @@ note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
 
 ```
 
-- 10k Bytes
+- Input Size: 10k Bytes
 ```shell
 Trace length: 175
 thread 'main' panicked at /Users/muhtasim/.cargo/git/checkouts/jolt-6b856340b98daf0c/2e9002d/jolt-core/src/jolt/vm/read_write_memory.rs:251:9:
 assertion failed: program_io.inputs.len() <= program_io.memory_layout.max_input_size as usize
 note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
-
 ```
 
-### Poseidon
+## Poseidon
 ```rust
 use starknet_crypto::{PoseidonHasher};
 use starknet_types_core::felt::Felt;
@@ -320,7 +322,7 @@ pub fn pos() {
 ``` 
 
 #### Result
-- Input 32 bytes
+- Input Size: 32 bytes
 ```shell
 Trace length: 554595
 Prover Time 434.08379375s
