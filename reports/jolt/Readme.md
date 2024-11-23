@@ -12,15 +12,16 @@ fn add(a: u64, b: u64) -> u64 {
 #### Result
 
 ```
+SRS Compute and Guest Program Compile Time 26.423080166s
+
 Trace length: 141
-Prover Time 31.297901583s
+Prover Time 726.201625ms
 Proof Size 266277
 
-Verify Time 45.633542ms
+Verify Time 40.219625ms
 
-result: 30
-valid: true
-Total Time elapsed: 31.505612833s
+isProofValid: true
+Total Time Elapsed: (build + prove + verify) 27.18973875s
 ```
 
 
@@ -33,15 +34,16 @@ fn mul(a: u64, b: u64) -> u64 {
 
 #### Result
 ```shell
+SRS Compute and Guest Program Compile Time 27.275818875s
+
 Trace length: 141
-Prover Time 30.57905825s
+Prover Time 725.506417ms
 Proof Size 266277
 
-Verify Time 38.961667ms
+Verify Time 41.788ms
 
-result: 90
-valid: true
-Total Time elapsed: 30.735463166s
+isProofValid: true
+Total Time Elapsed: (build + prove + verify) 28.043415584s
 ```
 
 ## Multiplication
@@ -54,16 +56,16 @@ fn mul(a: u64, b: u64) -> u64 {
 #### Result
 
 ```shell
+SRS Compute and Guest Program Compile Time 38.166960834s
+
 Trace length: 157
-Prover Time 36.085309041s
+Prover Time 749.941917ms
 Proof Size 266278
 
-Verify Time 42.617333ms
+Verify Time 45.77175ms
 
-result: 200
-valid: true
-Total Time elapsed: 36.249379542s
-
+isProofValid: true
+Total Time Elapsed: (build + prove + verify) 38.962964125s
 ```
 
 ## Division
@@ -76,15 +78,16 @@ fn div(a: u64, b: u64) -> u64 {
 
 #### Result
 ```shell
+SRS Compute and Guest Program Compile Time 35.004701375s
+
 Trace length: 191
-Prover Time 23.293768375s
+Prover Time 715.949875ms
 Proof Size 267469
 
-Verify Time 43.647ms
+Verify Time 46.196917ms
 
-result: 4
-valid: true
-Total Time elapsed: 23.472635375s
+isProofValid: true
+Total Time Elapsed: (build + prove + verify) 35.767325417s
 ```
 
 ## Fibonacci
