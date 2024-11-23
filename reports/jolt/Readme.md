@@ -9,7 +9,6 @@ fn add(a: u64, b: u64) -> u64 {
     a + b
 }
 ```
-#### Result
 
 ```
 SRS Compute and Guest Program Compile Time 26.423080166s
@@ -32,7 +31,6 @@ fn mul(a: u64, b: u64) -> u64 {
 }
 ```
 
-#### Result
 ```shell
 SRS Compute and Guest Program Compile Time 27.275818875s
 
@@ -53,7 +51,6 @@ fn mul(a: u64, b: u64) -> u64 {
 }
 ```
 
-#### Result
 
 ```shell
 SRS Compute and Guest Program Compile Time 38.166960834s
@@ -76,7 +73,6 @@ fn div(a: u64, b: u64) -> u64 {
 }
 ```
 
-#### Result
 ```shell
 SRS Compute and Guest Program Compile Time 35.004701375s
 
@@ -107,7 +103,6 @@ fn fib(n: u64) -> u128 {
 }
 ```
 
-#### Result
 
 - Input: 1
 ```shell
@@ -205,7 +200,6 @@ fn sha2(input: &[u8]) -> [u8; 32] {
 }
 ```
 
-#### Result
 - Input Size: 32 Bytes
 ```shell
 Trace length: 4662
@@ -324,7 +318,6 @@ pub fn pos() {
 }
 ``` 
 
-#### Result
 - Input Size: 32 bytes
 ```shell
 Trace length: 554595
