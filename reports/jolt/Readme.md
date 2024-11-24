@@ -1,7 +1,18 @@
 # Jolt
 
-Hardware
-- Macbook Pro M2 Pro - Core 10 - Memory 16 GB
+- [Architecture Overview](https://jolt.a16zcrypto.com/how/architecture.html)
+
+- Benchmark Hardware
+    - Macbook Pro M1 Pro - Core 8 - Memory 8 GB
+    - Macbook Pro M2 Pro - Core 10 - Memory 16 GB
+
+- Benchmark Operations
+  - Arithmetic Operations: Addition, Subtraction, Multiplication, Division
+  - Fibonacci: Variants 1, 10, 100, 1000, 10000, 50000, 62500, 70000
+  - SHA256: Variants: 32b, 100b, 1k bytes, 2k bytes, 3k bytes, 5k bytes, 10k bytes
+  - Poseidon: 32 bytes
+
+Each benchmark code followed by its output metrics is listed below.
 
 ## Addition
 ```rust
@@ -51,7 +62,6 @@ fn mul(a: u64, b: u64) -> u64 {
 }
 ```
 
-
 ```shell
 SRS Compute and Guest Program Compile Time 38.166960834s
 
@@ -87,7 +97,7 @@ Total Time Elapsed: (build + prove + verify) 35.767325417s
 ```
 
 ## Fibonacci
-> variants: 1, 10, 100, 1000, 10000, 100000
+> variants: 1, 10, 100, 1000, 10000, 50000, 62500, 70000
 
 ```rust
 fn fib(n: u64) -> u128 {
@@ -122,75 +132,107 @@ Total Time elapsed: 23.139271375s
 
 - Input: 10
 ```shell
-Input n read from JSON: 10
-
+n: 10
+SRS Compute and Guest Program Compile Time: 21.294665666s
 Trace length: 369
-Prover Time 21.068039375s
+Prover Time 574.347125ms
 Proof Size 281060
 
-Verify Time 40.597584ms
+Verify Time 39.390292ms
 
-result: 55
-valid: true
-Total Time elapsed: 21.249532792s
+isProofValid: true
+Total Time Elapsed: (build + prove + verify): 21.9088845s
 ```
 
 - Input: 100
 ```shell
-Input n read from JSON: 100
-
+n: 100
+SRS Compute and Guest Program Compile Time: 20.32695075s
 Trace length: 3021
-Prover Time 21.102921209s
+Prover Time 702.883708ms
 Proof Size 327917
 
-Verify Time 43.000709ms
+Verify Time 42.85075ms
 
-result: 354224848179261915075
-valid: true
-Total Time elapsed: 21.297147917s
+isProofValid: true
+Total Time Elapsed: (build + prove + verify): 21.073325416s
 ```
 
 - Input: 1000
 ```shell
-Input n read from JSON: 1000
-
+n: 1000
+SRS Compute and Guest Program Compile Time: 20.224171875s
 Trace length: 28280
-Prover Time 21.951744708s
+Prover Time 2.08951825s
 Proof Size 378519
 
-Verify Time 50.479167ms
+Verify Time 48.993625ms
 
-result: 101760851154547862183199185335023067211
-valid: true
-Total Time elapsed: 22.184175s
+isProofValid: true
+Total Time Elapsed: (build + prove + verify): 22.363307584s
 ```
 
 - Input: 10000
 ```shell
-Input n read from JSON: 10000
-
+n: 10000
+SRS Compute and Guest Program Compile Time: 19.906918667s
 Trace length: 280287
-Prover Time 36.798820375s
+Prover Time 21.730433291s
 Proof Size 452398
 
-Verify Time 59.920792ms
+Verify Time 103.7595ms
 
-result: 45370814669650777014160265265247951323
-valid: true
-Total Time elapsed: 37.046944542s
+isProofValid: true
+Total Time Elapsed: (build + prove + verify): 41.742032542s
 ```
 
 
-- Input: 100000
+- Input: 50000
+> For 8 GB of RAM, the program can handle inputs up to 37,400.
 ```shell
-Input n read from JSON: 100000
+n: 50000
+SRS Compute and Guest Program Compile Time: 19.734620333s
+Trace length: 1400285
+Prover Time 231.064130417s
+Proof Size 491936
 
-Trace length: 2800285
-zsh: killed     cargo run --release
+Verify Time 150.672333ms
+
+isProofValid: true
+Total Time Elapsed: (build + prove + verify): 250.951821958s
+```
+
+
+- Input: 62500
+```shell
+n: 62500
+SRS Compute and Guest Program Compile Time: 23.773564084s
+Trace length: 1750285
+Prover Time 216.526958625s
+Proof Size 491936
+
+Verify Time 169.939709ms
+
+isProofValid: true
+Total Time Elapsed: (build + prove + verify): 240.474649334s
+```
+
+- Input: 70000
+```shell
+n: 70000
+SRS Compute and Guest Program Compile Time: 23.012281208s
+Trace length: 1960285
+Prover Time 245.362881084s
+Proof Size 491936
+
+Verify Time 150.697625ms
+
+isProofValid: true
+Total Time Elapsed: (build + prove + verify): 268.528882708s
 ```
 
 ## SHA256
-> variants: 32b, 1k bytes, 2k bytes, 3k bytes, 4k bytes, 5k bytes, 10k bytes
+> variants: 32b, 100b, 1k bytes, 2k bytes, 3k bytes, 5k bytes, 10k bytes
 ```rust
 fn sha2(input: &[u8]) -> [u8; 32] {
     let mut hasher = Sha256::new();
@@ -202,85 +244,93 @@ fn sha2(input: &[u8]) -> [u8; 32] {
 
 - Input Size: 32 Bytes
 ```shell
+SRS Compute and Guest Program Compile Time: 21.304487958s
 Trace length: 4662
-Prover Time 34.90987475s
+Prover Time 838.498666ms
 Proof Size 348307
 
-Verify Time 51.032167ms
+Verify Time 46.87975ms
 
-result: [248, 73, 214, 115, 37, 250, 207, 4, 23, 123, 198, 99, 178, 220, 84, 64, 81, 131, 28, 88, 158, 245, 129, 212, 18, 242, 235, 164, 72, 52, 231, 124]
-valid: true
-Total Time elapsed: 35.1319985s
+isProofValid: true
+Total Time Elapsed: (build + prove + verify): 22.190249583s
+```
 
+- Input Size: 100 Bytes
+```shell
+SRS Compute and Guest Program Compile Time: 21.933417208s
+Trace length: 8740
+Prover Time 1.345950875s
+Proof Size 365239
+
+Verify Time 46.762917ms
+
+isProofValid: true
+Total Time Elapsed: (build + prove + verify): 23.326511375s
 ```
 
 - Input Size: 1k Bytes
 ```shell
+SRS Compute and Guest Program Compile Time: 20.650488708s
 Trace length: 62231
-Prover Time 26.391225s
+Prover Time 2.198708625s
 Proof Size 401116
 
-Verify Time 54.102875ms
+Verify Time 52.631292ms
 
-result: [16, 148, 78, 213, 22, 241, 187, 1, 208, 96, 241, 147, 59, 128, 182, 120, 151, 152, 55, 88, 164, 63, 92, 40, 20, 4, 193, 51, 240, 220, 127, 117]
-valid: true
-Total Time elapsed: 26.644473791s
+isProofValid: true
+Total Time Elapsed: (build + prove + verify): 22.902206375s
 ```
 
 - Input Size: 2k bytes
 ```shell
+SRS Compute and Guest Program Compile Time: 21.408510875s
 Trace length: 123315
-Prover Time 26.650922291s
+Prover Time 4.712634709s
 Proof Size 420428
 
-Verify Time 53.676917ms
+Verify Time 68.002541ms
 
-result: [13, 169, 211, 116, 216, 227, 44, 229, 184, 96, 192, 190, 38, 207, 117, 159, 67, 205, 78, 230, 6, 68, 110, 253, 54, 113, 138, 126, 199, 187, 253, 238]
-valid: true
-Total Time elapsed: 26.912961083s
+isProofValid: true
+Total Time Elapsed: (build + prove + verify): 26.189522709s
 ```
 
 - Input Size: 3k bytes
 ```shell
+SRS Compute and Guest Program Compile Time: 22.174915417s
 Trace length: 184823
-Prover Time 32.895957125s
+Prover Time 13.464369666s
 Proof Size 440156
 
-Verify Time 61.172083ms
+Verify Time 74.823ms
 
-result: [39, 33, 95, 58, 253, 215, 82, 90, 235, 249, 141, 230, 154, 134, 99, 66, 87, 243, 128, 247, 93, 211, 31, 74, 167, 67, 237, 143, 255, 92, 3, 228]
-valid: true
-Total Time elapsed: 33.181559083s
-```
-
-- Input Size: 4k bytes
-```shell
-Trace length: 241759
-Prover Time 35.158499833s
-Proof Size 441156
-
-Verify Time 68.891166ms
-
-result: [110, 240, 21, 30, 168, 157, 239, 3, 73, 170, 177, 3, 12, 39, 222, 163, 59, 229, 65, 43, 197, 52, 153, 177, 162, 166, 232, 35, 180, 22, 95, 181]
-valid: true
-Total Time elapsed: 35.458870084s
+isProofValid: true
+Total Time Elapsed: (build + prove + verify): 35.714604708s
 ```
 
 - Input Size: 5k Bytes
 ```shell
-Trace length: 175
-thread 'main' panicked at /Users/muhtasim/.cargo/git/checkouts/jolt-6b856340b98daf0c/2e9002d/jolt-core/src/jolt/vm/read_write_memory.rs:251:9:
-assertion failed: program_io.inputs.len() <= program_io.memory_layout.max_input_size as usize
-note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+SRS Compute and Guest Program Compile Time: 22.743658208s
+Trace length: 302846
+Prover Time 22.862356542s
+Proof Size 463220
 
+Verify Time 66.295458ms
+
+isProofValid: true
+Total Time Elapsed: (build + prove + verify): 45.672874083s
 ```
 
 - Input Size: 10k Bytes
 ```shell
-Trace length: 175
-thread 'main' panicked at /Users/muhtasim/.cargo/git/checkouts/jolt-6b856340b98daf0c/2e9002d/jolt-core/src/jolt/vm/read_write_memory.rs:251:9:
-assertion failed: program_io.inputs.len() <= program_io.memory_layout.max_input_size as usize
-note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+SRS Compute and Guest Program Compile Time: 20.949013292s
+Trace length: 600815
+Prover Time 47.174928041s
+Proof Size 489804
+
+Verify Time 171.185666ms
+
+isProofValid: true
+Total Time Elapsed: (build + prove + verify): 68.295701584s
 ```
 
 ## Poseidon
