@@ -1,7 +1,18 @@
 # Jolt
 
-Hardware
-- Macbook Pro M2 Pro - Core 10 - Memory 16 GB
+- [Architecture Overview](https://jolt.a16zcrypto.com/how/architecture.html)
+
+- Benchmark Hardware
+    - Macbook Pro M1 Pro - Core 8 - Memory 8 GB
+    - Macbook Pro M2 Pro - Core 10 - Memory 16 GB
+
+- Benchmark Operations
+  - Arithmetic Operations: Addition, Subtraction, Multiplication, Division
+  - Fibonacci: Variants 1, 10, 100, 1000, 10000, 100000
+  - SHA256: Variants: 32b, 1k bytes, 2k bytes, 3k bytes, 4k bytes, 5k bytes, 10k bytes
+  - Poseidon: 32 bytes
+
+Each benchmark code followed by its output metrics is listed below.
 
 ## Addition
 ```rust
@@ -50,7 +61,6 @@ fn mul(a: u64, b: u64) -> u64 {
     a * b
 }
 ```
-
 
 ```shell
 SRS Compute and Guest Program Compile Time 38.166960834s
