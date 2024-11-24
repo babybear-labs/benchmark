@@ -6,8 +6,7 @@ pub fn main() {
     println!("SRS Compute and Guest Program Compile Time: {:?}", total.elapsed());
     
     let proving_time = std::time::Instant::now();
-    let input = &[5u8; 10000];
-    let (output, proof) = prove(input);
+    let (output, proof) = prove();
     println!("Prover Time {:?}", proving_time.elapsed());
     println!("Proof Size {:?}", proof.size().unwrap());
     println!();
