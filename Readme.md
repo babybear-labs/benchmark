@@ -83,6 +83,9 @@ The detailed reports can be found in the [reports](./reports/) directory.
 
 Each project has its own README file with instructions on how to install the dependencies and run the benchmarks.
 
+## Roadmap
+Please refer to the [issues](https://github.com/babybear-labs/benchmark/issues).
+
 ## Contributors
 
 This project is part of the ZK and Scaling Bootcamp organized by Encode club.  
