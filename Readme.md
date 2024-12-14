@@ -94,5 +94,15 @@ This project is part of the ZK and Scaling Bootcamp organized by Encode club.
 - Yogesh : https://x.com/yogesh_eth
 - Anubha
 
+## Other benchmarks
+- [Benchmarking ZKP Development Frameworks: the Pantheon of ZKP](https://ethresear.ch/t/benchmarking-zkp-development-frameworks-the-pantheon-of-zkp/14943)
+- [Lurk 0.5 Benchmarks](https://argument.xyz/blog/perf-2024)
+- [Lita Benchmark](https://lita.gitbook.io/lita-documentation/architecture/benchmarks)
+- [ZK Benchmark](https://github.com/polybase/zk-benchmarks)
+- [a16z Benchmark](https://github.com/a16z/zkvm-benchmarks)
+- [A zkVM Survey for the Nomos Coordination Layer](https://blog.nomos.tech/a-zkvm-survey-for-the-nomos-coordination-layer)
+- [Your definitive guide to zkVMs](https://mirror.xyz/stackrlabs.eth/jEBSBZtKEiMiTrRIGMCxN7n6r7al-vi25lmrnD610W4)
+- [Risc Zero Benchmark](https://reports.risczero.com/benchmarks/Linux-cpu)
+
 ## Acknowledgments
 Special thanks to the ZK and Scaling Bootcamp team for organizing this event and providing us with the opportunity to learn and contribute to the ZK space.
