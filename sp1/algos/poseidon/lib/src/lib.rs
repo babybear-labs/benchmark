@@ -36,5 +36,5 @@ pub fn pos() {
     for chunk in &felt_chunks {
         hasher.update(*chunk);
     }
-    let hash = hasher.finalize();
+    let _hash = hasher.finalize();
 }
