@@ -80,12 +80,12 @@ The detailed reports can be found in the [reports](./reports/) directory.
 -->
 
 | Proof System           | Prover Time (s) | Cycles  | Verifier Time (s) | Prover Memory (KB) | Proof Size         |
-|-------------------------|-----------------|---------|-------------------|---------------------|--------------------|
+|------------------------|-----------------|---------|-------------------|---------------------|--------------------|
 | Halo2                  | 0.196           | -       | 0.004             | 9.8                 | 1664               |
 | Circom                 | 1.75            | 9999    | 0.81              | 466280              | 805                |
 | Risc Zero              | 6.37            | 65536   | -                 | -                   | 206182             |
 | Jolt                   | 21.73           | 280287  | 0.01              | -                   | 452398             |
-| Nexus (max input 100)  | 35.2            | -       | 2.4               | -                   | 47.9 MB            |
+| Nexus (max 100)        | 35.2            | -       | 2.4               | -                   | 47.9 MB            |
 | SP1                    | 18.87           | 69101   | 0.174             | -                   | 2656912            |
 | Powdr                  | 8.64            | 2990    | -                 | -                   | -                  |
 
@@ -97,7 +97,7 @@ The detailed reports can be found in the [reports](./reports/) directory.
 -->
 
 | Proof System           | Prover Time (s) | Cycles  | Verifier Time (s) | Prover Memory (KB) | Proof Size (B)     |
-|-------------------------|-----------------|---------|-------------------|---------------------|--------------------|
+|------------------------|-----------------|---------|-------------------|---------------------|--------------------|
 | Halo2                  | 14.78           | -       | 0.13              | 1134                | 4064               |
 | Circom                 | 46.07           | 540736  | 1.14              | 3920848             | 805                |
 | Risc Zero              | 2.5             | 65536   | -                 | -                   | 210157             |
@@ -113,14 +113,14 @@ The detailed reports can be found in the [reports](./reports/) directory.
 <img width="600" alt="Poseidon" src="https://github.com/user-attachments/assets/c468f0fc-163d-44f8-9b0e-b726dd7a8653">
 -->
 
-| Proof System | Prover Time (s) | Verifier Time (s) | Prover Memory (KB) | Proof Size (B) | Trace Length |
+| Proof System | Prover Time (s)|     Cycles        | Verifier Time (s) | Prover Memory (KB) | Proof Size (B) |
 |-------------|-----------------|-------------------|-------------------|----------------|---------------|
-| Halo2       |       8.74      |       0.086       |       25          |      2144      |      -        |
-| Circom      |       1.19      |       0.72        |     373560        |       804      |     4184      |
-| Risc Zero   |       5.47      |        -          |       -           |      256742    |     524288    |
-| Jolt        |       91.38     |       0.19        |       -           |     477746     |     554595    |
-| SP1         |       112.5     |       0.509       |       -           |     2876912    |     39479     |
-| Powdr       |       21.54     |       -           |       -           |       -        |     286652    |
+| Halo2       |       8.74      |      -            |      0.086        |       25       |      2144     | 
+| Circom      |       1.19      |     4184          |      0.72         |     373560     |       804     | 
+| Risc Zero   |       5.47      |     524288        |        -          |       -        |      256742   |
+| Jolt        |       91.38     |     554595        |       0.19        |       -        |     477746    |
+| SP1         |       112.5     |      39479        |      0.509        |       -        |     2876912   |
+| Powdr       |       21.54     |     286652        |       -           |       -        |       -       |
 
 ## Benchmark Machine Specifications
 
