@@ -25,15 +25,15 @@ Our aim is to benchmark the performance of these proofs, comparing them in terms
 
 | Scheme | Benchmark Code | Reports |
 |--------------|-------------------|-----------|
-| [Halo2](https://zcash.github.io/halo2) | [code](./halo2/) | [report](./reports/halo2/)   |
-| [Circom](https://docs.circom.io)       | [code](./circom/)|  [report](./reports/circom/) |
-| [Nexus](https://docs.nexus.xyz)        | [code](./nexus/) | [report](./reports/nexus/)   |
-| [Risc Zero](https://dev.risczero.com/api)| [code](./risc-zero/) | [report](./reports/risc-zero/) |
-| [SP1](https://docs.succinct.xyz/docs/sp1/introduction) | [code](./sp1/)     | [report](./reports/sp1/)     |
 | [Jolt](https://jolt.a16zcrypto.com)    | [code](./jolt/)    | [report](./reports/jolt/)    |
 | [Powdr](https://docs.powdr.org/)       | [code](./powdr/)   | [report](./reports/powdr/)   |
-| [Polygon Miden](https://0xpolygonmiden.github.io/miden-vm/intro/main.html)   | TBA       | TBA      |
-| [Aleo SnarkVM](https://github.com/ProvableHQ/snarkVM)                        | TBA       | TBA      |
+| [Circom](https://docs.circom.io)       | [code](./circom/)|  [report](./reports/circom/Results_circom.txt) |
+| [Nexus](https://docs.nexus.xyz)        | [code](./nexus/) | [report](./reports/nexus/)   |
+| [Halo2](https://zcash.github.io/halo2) | [code](https://github.com/babybear-labs/halo2/tree/ba4d9c55c88091a7732478042eb548943a63e056) | [report](./reports/halo2/)   |
+| [Risc Zero](https://dev.risczero.com/api)| [code](./risc-zero/) | [report](./risc-zero/benchmarks/risc-zero.json) |
+| [SP1](https://docs.succinct.xyz/docs/sp1/introduction) | [code](./sp1/)     | [report](./reports/sp1/) |
+| [Polygon Miden](https://0xpolygonmiden.github.io/miden-vm/intro/main.html)   | TBA       | TBA       |
+| [Aleo SnarkVM](https://github.com/ProvableHQ/snarkVM)                        | TBA       | TBA       |
 | [Zokrates](https://zokrates.github.io)         | TBA                  | TBA                          |
 | [Delphinus Lab ZKWASM](https://github.com/DelphinusLab/zkWasm)        | TBA              | TBA       |
 | [Lita Valida](https://lita.gitbook.io)         | TBA                  | TBA                          |
@@ -61,7 +61,7 @@ Our aim is to benchmark the performance of these proofs, comparing them in terms
 |     **Jolt**     |   Both          |       Yes       |   Very High |     Very High   |  Sumcheck and lookup arguments, optimized for high-performance proof generation, upcoming [twist and shout](https://eprint.iacr.org/2025/105.pdf)   |
 |  **Nexus zkVM**  |   Transparent   |       Partial     |   Moderate  |       High      | Privacy-focused zkVM, Ethereum compatibility, supports smart contract verification	    | 
 |     **SP1**      |   Transparent   |         Yes       |   Very High |     Very High   | Optimized for rollups, efficient parallel proving, GPU-optimised, supports high-throughput applications, supports arbitrary computations, [whitepaper](https://www.provewith.us)   |
-|    **Powdr**     |   Transparent   |         Yes       |     High    |       High      |  Dveloper-friendly, multiple proof systems, and zk-continuations for unbounded execution, minimal setup   |
+|    **Powdr**     |   Transparent   |         Yes       |     High    |       High      |  Developer-friendly, multiple proof systems, and zk-continuations for unbounded execution, minimal setup   |
 | **Polygon Miden**   | Transparent            | Yes                     | High        | High                | STARK-based (Winterfell) zkVM, designed for program execution proofs, high scalability|
 | **Aleo SnarkVM**    | Trusted Setup          | No (Pairing-based)      | Moderate    | High                | Privacy-preserving SNARK-based zkVM, supports private smart contracts    |
 | **Zokrates**        | Trusted Setup          | No (Pairing-based)      | Moderate    | High                | High-level DSL for zk-SNARKs, extensive developer tooling, supports Groth16 and PLONK     |
