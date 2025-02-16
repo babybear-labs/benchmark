@@ -60,13 +60,13 @@ Our aim is to benchmark the performance of these proofs, comparing them in terms
 |   **Risc Zero**  |   Transparent   |         Yes       |     High    |       High      |  General-purpose zkVM, RISC-V architecture, supports arbitrary computations   |
 |     **Jolt**     |   Both          |       Yes       |   Very High |     Very High   |  Sumcheck and lookup arguments, optimized for high-performance proof generation, upcoming [twist and shout](https://eprint.iacr.org/2025/105.pdf)   |
 |  **Nexus zkVM**  |   Transparent   |       Partial     |   Moderate  |       High      | Privacy-focused zkVM, Ethereum compatibility, supports smart contract verification	    | 
-|     **SP1**      |   Transparent   |         Yes       |   Very High |     Very High   | Optimized for rollups, efficient parallel proving, GPU-optimised, supports high-throughput applications   |
-|    **Powdr**     |   Transparent   |         Yes       |     High    |       High      |  General-purpose zkDSL, adaptable to multiple proving systems, developer-friendly   |
+|     **SP1**      |   Transparent   |         Yes       |   Very High |     Very High   | Optimized for rollups, efficient parallel proving, GPU-optimised, supports high-throughput applications, supports arbitrary computations, [whitepaper](https://www.provewith.us)   |
+|    **Powdr**     |   Transparent   |         Yes       |     High    |       High      |  Dveloper-friendly, multiple proof systems, and zk-continuations for unbounded execution, minimal setup   |
 | **Polygon Miden**   | Transparent            | Yes                     | High        | High                | STARK-based (Winterfell) zkVM, designed for program execution proofs, high scalability|
 | **Aleo SnarkVM**    | Trusted Setup          | No (Pairing-based)      | Moderate    | High                | Privacy-preserving SNARK-based zkVM, supports private smart contracts    |
 | **Zokrates**        | Trusted Setup          | No (Pairing-based)      | Moderate    | High                | High-level DSL for zk-SNARKs, extensive developer tooling, supports Groth16 and PLONK     |
 | **Delphinus ZKWASM**| Transparent            | Yes                     | High        | High                | WebAssembly-based zkVM, supports proving WASM execution, ideal for cross-platform apps    |
-| **Lita Valida**     | Transparent            | Yes                     | Moderate    | Moderate            | Modular chip, ensures correctness of zk circuits, supports custom proofs  |
+| **Lita Valida**     | Transparent            | Yes                     | Moderate    | Moderate            | Modular chip, ensures the correctness of zk circuits, supports custom proofs  |
 | **Eigen ZKVM**      | Transparent            | Yes                     | Very High   | High                | High-performance zkVM, designed for Ethereum scaling, supports recursive proofs           |
 | **CairoVM**         | Transparent            | Yes                     | Very High   | High                | STARK-based VM, designed for StarkNet, supports general-purpose computation               |
 | **Noir**            | Transparent            | Yes (STARK-based)       | High        | High                | High-level zkDSL, supports general-purpose zk circuits, STARK-based backend               |
