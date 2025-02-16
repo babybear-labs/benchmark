@@ -2,9 +2,9 @@
 
 ## Overview
 
-This repository hosts the source code and resources for benchmarking various Zero-Knowledge (ZK) proofs. It builds upon the original repositories of Halo2, RISC0, Nexus, SP1, Jolt, Circom, and Powdr with our implementations of proofs including but not limited to SHA256, Fibonacci, Poseidon operations.
+This repository hosts the source code and resources for benchmarking various Zero-Knowledge (ZK) proofs. It builds upon the original repositories of Halo2, RISC0, Nexus, SP1, Jolt, Circom, and Powdr with our implementations of proofs including but not limited to SHA256, Fibonacci, and Poseidon operations.
 
-Our aim is to benchmark the performance of these proofs, comparing them in terms of time, space, and other metrics. This comprehensive comparison will not only highlight the most popular ZK proofs and their implementations but also deepen our understanding of their inner workings, developer friendliness and proving systems.
+Our aim is to benchmark the performance of these proofs, comparing them in terms of time, space, and other metrics. This comprehensive comparison will not only highlight the most popular ZK proofs and their implementations but also deepen our understanding of their inner workings, developer friendliness, and proving systems.
 
 ## Goals
 
@@ -21,15 +21,34 @@ Our aim is to benchmark the performance of these proofs, comparing them in terms
   - nth Prime: Variants 1, 10, 100, 1000, 10000
   - Cryptographic Verifications: ECDSA, Elliptic Curve, BLS Verification, BLS Aggregation
 
-## Proving Systems
+## Proving Schemes
 
-- [Halo2](./halo2/)
-- [Circom](./circom/)
-- [Nexus zkVM](./nexus/)
-- [Risc Zero](./risc-zero/)
-- [SP1](./sp1/)
-- [Jolt](./jolt/)
-- [Powdr](./powdr/)
+| Scheme | Benchmark Code | Reports |
+|--------------|-------------------|-----------|
+| [Halo2](https://zcash.github.io/halo2) | [code](./halo2/) | [report](./reports/halo2/)   |
+| [Circom](https://docs.circom.io)       | [code](./circom/)|  [report](./reports/circom/) |
+| [Nexus](https://docs.nexus.xyz)        | [code](./nexus/) | [report](./reports/nexus/)   |
+| [Risc Zero](https://dev.risczero.com/api)| [code](./risc-zero/) | [report](./reports/risc-zero/) |
+| [SP1](https://docs.succinct.xyz/docs/sp1/introduction) | [code](./sp1/)     | [report](./reports/sp1/)     |
+| [Jolt](https://jolt.a16zcrypto.com)    | [code](./jolt/)    | [report](./reports/jolt/)    |
+| [Powdr](https://docs.powdr.org/)       | [code](./powdr/)   | [report](./reports/powdr/)   |
+| [Polygon Miden](./polygon-miden/)              | TBA                  | TBA                          |
+| [Aleo SnarkVM](./aleo-snarkvm/)                | TBA                  | TBA                          |
+| [Zokrates](./zokrates/)                        | TBA                  | TBA                          |
+| [Delphinus Lab ZKWASM](./delphinus-zkwasm/)    | TBA                  | TBA                          |
+| [Lita Valida](./lita-valida/)                  | TBA                  | TBA                          |
+| [Eigen ZKVM](./eigen-zkvm/)                    | TBA                  | TBA                          |
+| [CairoVM](./cairovm/)                          | TBA                  | TBA                          |
+| [Noir](./noir/)                                | TBA                  | TBA                          |
+| [Ola VM](./ola-vm/)                            | TBA                  | TBA                          |
+| [Triton VM](./triton-vm/)                      | TBA                  | TBA                          |
+| [Lurk](./lurk/)                                | TBA                  | TBA                          |
+| [Ceno](./ceno/)                                | TBA                  | TBA                          |
+| [Expander](./expander/)                        | TBA                  | TBA                          |
+| [OpenVM](./openvm/)                            | TBA                  | TBA                          |
+| [Brevis](./brevis/)                            | TBA                  | TBA                          |
+
+> TBA = To Be Added
 
 #### General overview of features of proving schemes
 <!---<img width="600" alt="Screenshot 2024-11-22 at 3 44 30 PM" src="https://github.com/user-attachments/assets/2768a9c5-7477-4e7b-86aa-f80a85818c2f">--->
@@ -62,7 +81,7 @@ The key differences between these proof systems include their setup complexity, 
 
 ## Reports
 
-The detailed reports can be found in the [reports](./reports/) directory.
+The detailed reports are in the [reports](./reports/) directory.
 - [Reports](./reports/)
   - [Jolt](./reports/jolt/)
   - [SP1](./reports/sp1/)
@@ -132,14 +151,14 @@ The detailed reports can be found in the [reports](./reports/) directory.
 
 ## Installation
 
-Each project has its own README file with instructions on how to install the dependencies and run the benchmarks.
+Each project has its own README file with instructions on installing the dependencies and running the benchmarks.
 
 ## Roadmap
 Please refer to the [issues](https://github.com/babybear-labs/benchmark/issues).
 
 ## Contributors
 
-This project is part of the ZK and Scaling Bootcamp organized by Encode club.  
+This project is part of the ZK and Scaling Bootcamp organized by the Encode club.  
 - Tanmoy : https://x.com/mtanm0y
 - Rosemary :https://x.com/rosekoikara
 - Yogesh : https://x.com/yogesh_eth
