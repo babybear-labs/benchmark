@@ -23,32 +23,37 @@ Our aim is to benchmark the performance of these proofs, comparing them in terms
 
 ## Proving Schemes
 
-| Scheme | Benchmark Code | Reports |
-|--------------|-------------------|-----------|
-| [Jolt](https://jolt.a16zcrypto.com)    | [code](./jolt/)    | [report](./reports/jolt/)    |
-| [Powdr](https://docs.powdr.org/)       | [code](./powdr/)   | [report](./reports/powdr/)   |
-| [Circom](https://docs.circom.io)       | [code](./circom/)|  [report](./reports/circom/Results_circom.txt) |
-| [Nexus](https://docs.nexus.xyz)        | [code](./nexus/) | [report](./reports/nexus/)   |
-| [Halo2](https://zcash.github.io/halo2) | [code](https://github.com/babybear-labs/halo2/tree/ba4d9c55c88091a7732478042eb548943a63e056) | [report](./reports/halo2/)   |
-| [Risc Zero](https://dev.risczero.com/api)| [code](./risc-zero/) | [report](./risc-zero/benchmarks/risc-zero.json) |
-| [SP1](https://docs.succinct.xyz/docs/sp1/introduction) | [code](./sp1/)     | [report](./reports/sp1/) |
-| [Polygon Miden](https://0xpolygonmiden.github.io/miden-vm/intro/main.html)   | TBA       | TBA       |
-| [Aleo SnarkVM](https://github.com/ProvableHQ/snarkVM)                        | TBA       | TBA       |
-| [Zokrates](https://zokrates.github.io)         | TBA                  | TBA                          |
-| [Delphinus Lab ZKWASM](https://github.com/DelphinusLab/zkWasm)        | TBA              | TBA       |
-| [Lita Valida](https://lita.gitbook.io)         | TBA                  | TBA                          |
-| [Eigen ZKVM](https://github.com/0xEigenLabs/eigen-zkvm) | TBA         | TBA                          |
-| [CairoVM](https://github.com/starkware-libs)   | TBA                  | TBA                          |
-| [Noir](https://noir-lang.org/docs)             | TBA                  | TBA                          |
-| [Ola VM](https://github.com/Sin7Y/olavm)       | TBA                  | TBA                          |
-| [Triton VM](https://triton-vm.org/spec)        | TBA                  | TBA                          |
-| [Lurk](https://docs.argument.xyz)              | TBA                  | TBA                          |
-| [Ceno](https://github.com/scroll-tech/ceno)    | TBA                  | TBA                          |
-| [Expander](https://expander.polyhedra.network) | TBA                  | TBA                          |
-| [OpenVM](https://book.openvm.dev)              | TBA                  | TBA                          |
-| [Brevis Pico](https://pico-docs.brevis.network)| TBA                  | TBA                          |
+| Name | Type | Benchmark Code | Reports |
+|--------------|------|-------------|-----------|
+| [Jolt](https://jolt.a16zcrypto.com)    | zkVM | [code](./jolt/)    | [report](./reports/jolt/)    |
+| [Powdr](https://docs.powdr.org/)       | zkVM | [code](./powdr/)   | [report](./reports/powdr/)   |
+| [Circom](https://docs.circom.io)       | HDL | [code](./circom/) |  [report](./reports/circom/Results_circom.txt) |
+| [Nexus](https://docs.nexus.xyz)        | zkVM | [code](./nexus/) | [report](./reports/nexus/)   |
+| [Halo2](https://zcash.github.io/halo2) | Proof System | [code](https://github.com/babybear-labs/halo2/tree/ba4d9c55c88091a7732478042eb548943a63e056) | [report](./reports/halo2/)   |
+| [Risc Zero](https://dev.risczero.com/api) | zkVM | [code](./risc-zero/) | [report](./risc-zero/benchmarks/risc-zero.json) |
+| [SP1](https://docs.succinct.xyz/docs/sp1/introduction) | zkVM | [code](./sp1/)     | [report](./reports/sp1/) |
+| [Polygon Miden](https://0xpolygonmiden.github.io/miden-vm/intro/main.html) | zkVM | TBA       | TBA       |
+| [Aleo SnarkVM](https://github.com/ProvableHQ/snarkVM) | zkVM | TBA       | TBA       |
+| [Zokrates](https://zokrates.github.io) | DSL | TBA                          | TBA                          |
+| [Delphinus Lab ZKWASM](https://github.com/DelphinusLab/zkWasm) | zkVM | TBA       | TBA       |
+| [Lita Valida](https://lita.gitbook.io) | zkVM | TBA                          | TBA                          |
+| [Eigen ZKVM](https://github.com/0xEigenLabs/eigen-zkvm) | zkVM | TBA                          | TBA                          |
+| [CairoVM](https://github.com/starkware-libs) | zkVM | TBA                  | TBA                          |
+| [Noir](https://noir-lang.org/docs) | DSL | TBA                  | TBA                          |
+| [Ola VM](https://github.com/Sin7Y/olavm) | zkVM | TBA                  | TBA                          |
+| [Triton VM](https://triton-vm.org/spec) | zkVM | TBA                  | TBA                          |
+| [Lurk](https://docs.argument.xyz) | zkVM | TBA                  | TBA                          |
+| [Ceno](https://github.com/scroll-tech/ceno) | zkVM | TBA                  | TBA                          |
+| [Expander](https://expander.polyhedra.network) | zkVM | TBA                  | TBA                          |
+| [OpenVM](https://book.openvm.dev) | zkVM | TBA                  | TBA                          |
+| [Brevis Pico](https://pico-docs.brevis.network) | zkVM | TBA                  | TBA                          |
 
-> TBA = To Be Added
+---
+- **zkVM**: Zero-Knowledge Virtual Machine, a virtual machine designed to execute programs written in standard programming languages while generating zero-knowledge proofs of their correctness.
+- **HDL**: Hardware Description Language, used for circuit descriptions.  
+- **DSL**: Domain-Specific Language, designed specifically for writing ZKP programs.
+- **Proof System**: Framework for creating and verifying zk-proofs  
+- **TBA**: To Be Added
 
 #### General overview of features of proving schemes
 <!---<img width="600" alt="Screenshot 2024-11-22 at 3 44 30 PM" src="https://github.com/user-attachments/assets/2768a9c5-7477-4e7b-86aa-f80a85818c2f">--->
