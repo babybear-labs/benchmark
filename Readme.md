@@ -118,7 +118,7 @@ The detailed reports are in the [reports](./reports/) directory.
 <img width="600" alt="fib" src="https://github.com/user-attachments/assets/e99bd993-ecb3-43dd-8e39-c90a4a8d17f6">
 -->
 
-| Proof System           | Prover Time (s) | Cycles  | Verifier Time (s) | Prover Memory (KB) | Proof Size         |
+| Proof System           | Prover Time (s) | Cycles  | Verifier Time (s) | Prover Memory (KB) | Proof Size (B)        |
 |------------------------|-----------------|---------|-------------------|---------------------|--------------------|
 | Halo2                  | 0.196           | -       | 0.004             | 9.8                 | 1664               |
 | Circom                 | 1.75            | 9999    | 0.81              | 466280              | 805                |
