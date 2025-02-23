@@ -193,6 +193,7 @@ This project is part of the ZK and Scaling Bootcamp organized by the Encode club
 - [A zkVM Survey for the Nomos Coordination Layer](https://blog.nomos.tech/a-zkvm-survey-for-the-nomos-coordination-layer)
 - [Your definitive guide to zkVMs](https://mirror.xyz/stackrlabs.eth/jEBSBZtKEiMiTrRIGMCxN7n6r7al-vi25lmrnD610W4)
 - [Risc Zero Benchmark](https://reports.risczero.com/benchmarks/Linux-cpu)
+- [ZKVM Benchmark - Yet another company](https://github.com/yetanotherco/zkvm_benchmarks)
 
 ## Acknowledgments
 Special thanks to the ZK and Scaling Bootcamp team for organizing this event and providing us with the opportunity to learn and contribute to the ZK space.
