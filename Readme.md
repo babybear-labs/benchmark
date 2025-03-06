@@ -48,6 +48,7 @@ Our aim is to benchmark the performance of these proofs, comparing them in terms
 | [OpenVM](https://book.openvm.dev) | zkVM | TBA                  | TBA                          |
 | [Brevis Pico](https://pico-docs.brevis.network) | zkVM | TBA                  | TBA                          |
 
+
 ---
 - **zkVM**: Zero-Knowledge Virtual Machine, a virtual machine designed to execute programs written in standard programming languages while generating zero-knowledge proofs of their correctness.
 - **HDL**: Hardware Description Language, used for circuit descriptions.  
@@ -81,7 +82,7 @@ Our aim is to benchmark the performance of these proofs, comparing them in terms
 | [**Ceno** ](https://github.com/scroll-tech/ceno)           | Transparent            | Yes                     | High        | High                | Non-uniform prover based on GKR Protocol, [Segment and Parallel](https://eprint.iacr.org/2024/387.pdf) Zero-knowledge Virtual Machine                       |
 | [**Expander**](https://expander.polyhedra.network)        | Transparent            | Yes                     | Very High   | Very High           | GKR + [Libra](https://eprint.iacr.org/2019/317.pdf), Parallel computing    |
 | [**OpenVM**](https://book.openvm.dev)           | Transparent            | Yes                     | High        | High                | Modular architecture, supports general-purpose zkVM, adaptable to various use cases       |
-| [**Brevis**](https://pico-docs.brevis.network)          | Transparent            | Yes                     | Very High   | High                | Focused on proof aggregation and recursion, moduler, [glue-and-coprocessor](https://vitalik.eth.limo/general/2024/09/02/gluecp.html) architecture, multiple proving backends, Coprocessor Integration   (STARK / CIRCLESTARK + AIR + FRI + RISC V)        |
+| [**Brevis**](https://pico-docs.brevis.network)          | Transparent            | Yes                     | Very High   | High                | Focused on proof aggregation and recursion, modular, [glue-and-coprocessor](https://vitalik.eth.limo/general/2024/09/02/gluecp.html) architecture, multiple proving backends, Coprocessor Integration   (STARK / CIRCLESTARK + AIR + FRI + RISC V)        |
 
 The key differences between these proof systems include their setup complexity, proof features, post-quantum resistance, scalability, and parallel execution capabilities. Some use recursive proofs, while others focus on efficiency or general-purpose functionality. The systems also vary in their post-quantum resistance and ability to scale and parallelize.
 
