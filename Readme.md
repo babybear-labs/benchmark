@@ -56,7 +56,62 @@ Our aim is to benchmark the performance of these proofs, comparing them in terms
 - **Proof System**: Framework for creating and verifying zk-proofs  
 - **TBA**: To Be Added
 
-#### General overview of features of proving schemes
+## **Result Summary** 
+
+Only selected operations are shown. The detailed [reports](./reports/) have metrics for other variants and additional operations.
+
+### Fibonacci
+> 10000 th number
+<!---
+<img width="600" alt="fib" src="https://github.com/user-attachments/assets/e99bd993-ecb3-43dd-8e39-c90a4a8d17f6">
+-->
+
+| Proof System           | Prover Time (s) | Cycles  | Verifier Time (s) | Prover Memory (KB) | Proof Size (B)        |
+|------------------------|-----------------|---------|-------------------|---------------------|--------------------|
+| Halo2                  | 0.196           | -       | 0.004             | 9.8                 | 1664               |
+| Circom                 | 1.75            | 9999    | 0.81              | 466280              | 805                |
+| Risc Zero              | 6.37            | 65536   | -                 | -                   | 206182             |
+| Jolt                   | 21.73           | 280287  | 0.01              | -                   | 452398             |
+| Nexus (max 100)        | 35.2            | -       | 2.4               | -                   | 47.9 MB            |
+| SP1                    | 18.87           | 69101   | 0.174             | -                   | 2656912            |
+| Powdr                  | 8.64            | 2990    | -                 | -                   | -                  |
+
+
+### SHA256 
+> 1 KB Input
+<!---
+<img width="600" alt="SHA256" src="https://github.com/user-attachments/assets/bd8a369b-1b4a-44cf-b541-0bdfdd5a5367">
+-->
+
+| Proof System           | Prover Time (s) | Cycles  | Verifier Time (s) | Prover Memory (KB) | Proof Size (B)     |
+|------------------------|-----------------|---------|-------------------|---------------------|--------------------|
+| Halo2                  | 14.78           | -       | 0.13              | 1134                | 4064               |
+| Circom                 | 46.07           | 540736  | 1.14              | 3920848             | 805                |
+| Risc Zero              | 2.5             | 65536   | -                 | -                   | 210157             |
+| Jolt                   | 2.199           | 62231   | 0.052             | -                   | 401116             |
+| Nexus                  | 30+ mins        | -       | -                 | -                   | -                  |
+| SP1                    | 17.6            | 71249   | 0.172             | -                   | 265691             |
+| Powdr                  | 9.07            | 73731   | -                 | -                   | -                  |
+
+
+### Poseidon 
+> 32 Byte input
+<!---
+<img width="600" alt="Poseidon" src="https://github.com/user-attachments/assets/c468f0fc-163d-44f8-9b0e-b726dd7a8653">
+-->
+
+| Proof System | Prover Time (s)|     Cycles        | Verifier Time (s) | Prover Memory (KB) | Proof Size (B) |
+|-------------|-----------------|-------------------|-------------------|----------------|---------------|
+| Halo2       |       8.74      |      -            |      0.086        |       25       |      2144     | 
+| Circom      |       1.19      |     4184          |      0.72         |     373560     |       804     | 
+| Risc Zero   |       5.47      |     524288        |        -          |       -        |      256742   |
+| Jolt        |       91.38     |     554595        |       0.19        |       -        |     477746    |
+| SP1         |       112.5     |      39479        |      0.509        |       -        |     2876912   |
+| Powdr       |       21.54     |     286652        |       -           |       -        |       -       |
+
+Additional reports in progress.
+
+## General overview of features of proving schemes
 <!---<img width="600" alt="Screenshot 2024-11-22 at 3 44 30 PM" src="https://github.com/user-attachments/assets/2768a9c5-7477-4e7b-86aa-f80a85818c2f">--->
 
 | Proof System | Setup Complexity | Post-Quantum Resistance | Scalability | Parallel Execution | Features |
@@ -110,57 +165,6 @@ The detailed reports are in the [reports](./reports/) directory.
   - [Halo2](./reports/halo2/)
   - [Nexus](./reports/nexus/)
   - [Circom](./reports/circom/)
- 
-**Summary:** Only selected operations are shown. The detailed [reports](./reports/) have metrics for other variants and additional operations.
-
-### Fibonacci 
-> 10000 th number
-<!---
-<img width="600" alt="fib" src="https://github.com/user-attachments/assets/e99bd993-ecb3-43dd-8e39-c90a4a8d17f6">
--->
-
-| Proof System           | Prover Time (s) | Cycles  | Verifier Time (s) | Prover Memory (KB) | Proof Size (B)        |
-|------------------------|-----------------|---------|-------------------|---------------------|--------------------|
-| Halo2                  | 0.196           | -       | 0.004             | 9.8                 | 1664               |
-| Circom                 | 1.75            | 9999    | 0.81              | 466280              | 805                |
-| Risc Zero              | 6.37            | 65536   | -                 | -                   | 206182             |
-| Jolt                   | 21.73           | 280287  | 0.01              | -                   | 452398             |
-| Nexus (max 100)        | 35.2            | -       | 2.4               | -                   | 47.9 MB            |
-| SP1                    | 18.87           | 69101   | 0.174             | -                   | 2656912            |
-| Powdr                  | 8.64            | 2990    | -                 | -                   | -                  |
-
-
-### SHA256 
-> 1 KB Input
-<!---
-<img width="600" alt="SHA256" src="https://github.com/user-attachments/assets/bd8a369b-1b4a-44cf-b541-0bdfdd5a5367">
--->
-
-| Proof System           | Prover Time (s) | Cycles  | Verifier Time (s) | Prover Memory (KB) | Proof Size (B)     |
-|------------------------|-----------------|---------|-------------------|---------------------|--------------------|
-| Halo2                  | 14.78           | -       | 0.13              | 1134                | 4064               |
-| Circom                 | 46.07           | 540736  | 1.14              | 3920848             | 805                |
-| Risc Zero              | 2.5             | 65536   | -                 | -                   | 210157             |
-| Jolt                   | 2.199           | 62231   | 0.052             | -                   | 401116             |
-| Nexus                  | 30+ mins        | -       | -                 | -                   | -                  |
-| SP1                    | 17.6            | 71249   | 0.172             | -                   | 265691             |
-| Powdr                  | 9.07            | 73731   | -                 | -                   | -                  |
-
-
-### Poseidon 
-> 32 Byte input
-<!---
-<img width="600" alt="Poseidon" src="https://github.com/user-attachments/assets/c468f0fc-163d-44f8-9b0e-b726dd7a8653">
--->
-
-| Proof System | Prover Time (s)|     Cycles        | Verifier Time (s) | Prover Memory (KB) | Proof Size (B) |
-|-------------|-----------------|-------------------|-------------------|----------------|---------------|
-| Halo2       |       8.74      |      -            |      0.086        |       25       |      2144     | 
-| Circom      |       1.19      |     4184          |      0.72         |     373560     |       804     | 
-| Risc Zero   |       5.47      |     524288        |        -          |       -        |      256742   |
-| Jolt        |       91.38     |     554595        |       0.19        |       -        |     477746    |
-| SP1         |       112.5     |      39479        |      0.509        |       -        |     2876912   |
-| Powdr       |       21.54     |     286652        |       -           |       -        |       -       |
 
 ## Benchmark Machine Specifications
 
