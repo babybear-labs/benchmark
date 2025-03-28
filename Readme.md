@@ -165,6 +165,90 @@ The detailed reports are in the [reports](./reports/) directory.
   - [Halo2](./reports/halo2/)
   - [Nexus](./reports/nexus/)
   - [Circom](./reports/circom/)
+ 
+## Structure
+
+```mermaid
+flowchart TD
+    %% Global Components
+    BO("Benchmark Orchestrator"):::orchestrator
+    REP("Reporting/Aggregation Module"):::report
+    DOC("Documentation Component"):::doc
+
+    %% Proof System Modules
+    subgraph "Proof System Modules"
+        %% Circom Module with internal details
+        subgraph "Circom Module"
+            COV("Overview"):::module
+            C1("Circuits"):::subcomponent
+            C2("Compilation&Proving Scripts"):::subcomponent
+            C3("Test Scripts"):::subcomponent
+            COV --> C1
+            C1 --> C2
+            C2 --> C3
+        end
+        H("Halo2 Module"):::module
+        J("Jolt Module"):::module
+        N("Nexus Module"):::module
+        P("Powdr Module"):::module
+        RZ("RISC Zero Module"):::module
+        SP("SP1 Module"):::module
+        Z("Zokrates Module"):::module
+    end
+
+    %% Data Flow Connections from Orchestrator to Modules
+    BO -->|"triggers"| COV
+    BO -->|"triggers"| H
+    BO -->|"triggers"| J
+    BO -->|"triggers"| N
+    BO -->|"triggers"| P
+    BO -->|"triggers"| RZ
+    BO -->|"triggers"| SP
+    BO -->|"triggers"| Z
+
+    %% Modules output benchmark results to Reporting Module
+    COV -->|"outputs"| REP
+    H -->|"outputs"| REP
+    J -->|"outputs"| REP
+    N -->|"outputs"| REP
+    P -->|"outputs"| REP
+    RZ -->|"outputs"| REP
+    SP -->|"outputs"| REP
+    Z -->|"outputs"| REP
+
+    %% Documentation guides Orchestrator and Modules
+    DOC ---|"guides"| BO
+    DOC ---|"guides"| COV
+    DOC ---|"guides"| H
+    DOC ---|"guides"| J
+    DOC ---|"guides"| N
+    DOC ---|"guides"| P
+    DOC ---|"guides"| RZ
+    DOC ---|"guides"| SP
+    DOC ---|"guides"| Z
+
+    %% Click Events for Component Mapping
+    click COV "https://github.com/babybear-labs/benchmark/tree/main/circom"
+    click C1 "https://github.com/babybear-labs/benchmark/tree/main/circom/circuits"
+    click C2 "https://github.com/babybear-labs/benchmark/blob/main/circom/scripts/compile_circuit.sh"
+    click C3 "https://github.com/babybear-labs/benchmark/blob/main/circom/test_fibonacci.py"
+    click H "https://github.com/babybear-labs/benchmark/tree/main/halo2"
+    click J "https://github.com/babybear-labs/benchmark/tree/main/jolt"
+    click N "https://github.com/babybear-labs/benchmark/tree/main/nexus"
+    click P "https://github.com/babybear-labs/benchmark/tree/main/powdr"
+    click RZ "https://github.com/babybear-labs/benchmark/tree/main/risc-zero"
+    click SP "https://github.com/babybear-labs/benchmark/tree/main/sp1"
+    click Z "https://github.com/babybear-labs/benchmark/tree/main/zokrates"
+    click REP "https://github.com/babybear-labs/benchmark/tree/main/reports"
+    click DOC "https://github.com/babybear-labs/benchmark/blob/main/documentation/Documentation.pdf"
+
+    %% Styles
+    classDef orchestrator fill:#FFCCFF,stroke:#990099,stroke-width:2px;
+    classDef module fill:#BBDEFF,stroke:#0D47A1,stroke-width:2px;
+    classDef subcomponent fill:#E3F2FD,stroke:#1565C0,stroke-width:1px;
+    classDef report fill:#C8E6C9,stroke:#2E7D32,stroke-width:2px;
+    classDef doc fill:#FFE0B2,stroke:#E65100,stroke-width:2px;
+```
 
 ## Benchmark Machine Specifications
 
