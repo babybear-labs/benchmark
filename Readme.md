@@ -256,11 +256,7 @@ flowchart TD
 
 ## Benchmark Machine Specifications
 
-- **Macbook M1 Pro:** Core 8, Memory 8 GB
 - **AlmaLinux 8.10:** Core 16, Memory 32 GB, Disk 1 TB
-- **Windows 11:** Core 16, Memory 32 GB, Disk 1 TB
-- **Intel(R):** Core 4 - Memory 8GB
-- **Macbook M2 Pro:** Core 16, Memory 16 GB
 
 ## Installation
 
