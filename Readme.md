@@ -89,7 +89,7 @@ The key differences between these proof systems include their setup complexity, 
 - **Proof System**: Framework for creating and verifying zk-proofs  
 - **TBA**: To Be Added
 
-## **Result Summary** 
+## **Result Summary** - as of Nov 2024
 
 Only selected operations are shown. The detailed [reports](./reports/) have metrics for other variants and additional operations.
 
