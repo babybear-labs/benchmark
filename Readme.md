@@ -284,6 +284,7 @@ This project is part of the [ZK and Scaling Bootcamp](https://x.com/encodeclub/s
 - [Your definitive guide to zkVMs](https://mirror.xyz/stackrlabs.eth/jEBSBZtKEiMiTrRIGMCxN7n6r7al-vi25lmrnD610W4)
 - [Risc Zero Benchmark](https://reports.risczero.com/benchmarks/Linux-cpu)
 - [ZKVM Benchmark - Yet another company](https://github.com/yetanotherco/zkvm_benchmarks)
+- [ETH Proofs](https://ethproofs.org)
 
 
 ## Acknowledgments
