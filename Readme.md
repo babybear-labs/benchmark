@@ -285,6 +285,7 @@ This project is part of the [ZK and Scaling Bootcamp](https://x.com/encodeclub/s
 - [Risc Zero Benchmark](https://reports.risczero.com/benchmarks/Linux-cpu)
 - [ZKVM Benchmark - Yet another company](https://github.com/yetanotherco/zkvm_benchmarks)
 - [ETH Proofs](https://ethproofs.org)
+- [Client side proving Eth Proofs](https://ethproofs.org/csp-benchmarks)
 
 
 ## Acknowledgments
