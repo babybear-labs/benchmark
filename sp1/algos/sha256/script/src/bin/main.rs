@@ -45,7 +45,7 @@ fn main() {
     }
 
     // Setup the prover client.
-    let client = ProverClient::new();
+    let client = ProverClient::from_env();
 
     // Setup the inputs.
     let mut stdin = SP1Stdin::new();
@@ -55,7 +55,7 @@ fn main() {
 
     if args.execute {
         // Execute the program
-        let (output, report) = client.execute(SHA_ELF, stdin).run().unwrap();
+        let (output, report) = client.execute(SHA_ELF, &stdin).run().unwrap();
         println!("Program executed successfully.");
 
         // Read the output.
@@ -65,7 +65,7 @@ fn main() {
         println!("a: {}", a);
 
         let input = &[5u8; 32];
-        let a = sha_lib::sha2(input);
+        let _a = sha_lib::sha2(input);
 
         // Record the number of cycles executed.
         println!("Number of cycles: {}", report.total_instruction_count());
@@ -75,7 +75,7 @@ fn main() {
 
         // Generate the proof
         let proof = client
-            .prove(&pk, stdin)
+            .prove(&pk, &stdin)
             .run()
             .expect("failed to generate proof");
 
