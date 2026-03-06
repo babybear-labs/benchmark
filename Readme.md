@@ -1,5 +1,8 @@
 # ZK Benchmark
 
+![benchmark](https://socialify.git.ci/babybear-labs/benchmark/image?language=1&name=1&owner=1&pattern=Circuit+Board&stargazers=1&theme=Dark)
+
+
 ## Overview
 
 This repository hosts the source code and resources for benchmarking various Zero-Knowledge (ZK) proofs. It builds upon the original repositories of Halo2, RISC0, Nexus, SP1, Jolt, Circom, and Powdr with our implementations of proofs including but not limited to SHA256, Fibonacci, and Poseidon operations.
