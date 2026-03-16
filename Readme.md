@@ -272,8 +272,8 @@ Please refer to the [issues](https://github.com/babybear-labs/benchmark/issues).
 
 This project is part of the [ZK and Scaling Bootcamp](https://x.com/encodeclub/status/1866139511291343131?s=20) organized by the Encode club.  
 - Tanmoy : https://x.com/mtanm0y
-- Rosemary :https://x.com/rosekoikara
-- Yogesh : https://x.com/yogesh_eth
+- Rosemary
+- Yogesh
 - Anubha
 
 ## Other benchmarks
