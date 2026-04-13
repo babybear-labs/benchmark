@@ -1,5 +1,7 @@
 # ZK Benchmark
 
+> Benchmark Date: Nov 25, 2024
+
 ![benchmark](https://socialify.git.ci/babybear-labs/benchmark/image?language=1&name=1&owner=1&pattern=Circuit+Board&stargazers=1&theme=Dark)
 
 
